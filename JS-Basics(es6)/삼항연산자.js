@@ -11,3 +11,5 @@ if(person) {
 
 // react에서는?
 console.log(person?person.name:"there is no person")
+
+
