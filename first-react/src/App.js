@@ -46,6 +46,7 @@ function App() {
      * onClick={() => play("rock")} 으로 콜백함수로 처리해줘야 한다.
      */ 
     setUserSelect(choice[userChoice]);
+    console.log("오류찾자!!!!!!!!!!", choice[userChoice]);
     let computerChoice = randomChoice();
     setComputerSelect(computerChoice);
     console.log("computerChoice ", computerChoice);
@@ -79,7 +80,7 @@ function App() {
      * 선생님 코드
      */
     setResult(judgement(choice[userChoice], computerChoice));
-
+    console.log("#############REsult########", result);
   }
 
   const judgement = (user, computer) => {
