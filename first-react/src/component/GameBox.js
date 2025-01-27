@@ -2,6 +2,13 @@ import React from 'react'
 
 const Game = (props) => {
   console.log("props : ", props);
+  let result;
+  if(props.name === "COMPUTER" && props.result !== "비김" && props.result !== null) {
+    result = props.result === "win" ? "lose":"win";
+  } else {
+    result = props.result;
+  }
+  
   return (
     <div className='gameBox'>
       <h1>{props.name}</h1>
@@ -18,7 +25,7 @@ const Game = (props) => {
        */}
       {/* <img className='item-img' src={props.item && props.item.img}></img> */}
       <p className='item-img'>{props.item && props.item.img}</p>
-      <h2>{props.result}</h2>
+      <h2>{result}</h2>
     </div>
   )
 }
