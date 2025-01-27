@@ -1,6 +1,5 @@
 import './App.css';
 import Game from './component/GameBox';
-import Rsp from './component/RspComponent.js';
 import { useState } from 'react';
 
 /**
@@ -37,20 +36,21 @@ function App() {
   // const [userResult, setUserResult] = useState(null);
   // const [computerResult, setComputerResult] = useState(null);
   const [result, setResult] = useState("");
-
+ 
   const play =(userChoice)=> {
     console.log("선택됨 ", userChoice);
+ 
     /**
      * UI를 그려줄 때 함수를 실행시켜 버리기 때문에 클릭하기 전부터 함수가 실행됨
      * 따라서 <button onClick={play("rock")}>바위</button>에서
      * onClick={() => play("rock")} 으로 콜백함수로 처리해줘야 한다.
      */ 
-    setUserSelect(choice[userChoice]);
-    console.log("오류찾자!!!!!!!!!!", choice[userChoice]);
+    
+    setUserSelect(choice[String(userChoice)]);  
     let computerChoice = randomChoice();
     setComputerSelect(computerChoice);
-    console.log("computerChoice ", computerChoice);
 
+  
     // 결과 출력
     /**
      * 나의 생각..
@@ -79,13 +79,12 @@ function App() {
     /**
      * 선생님 코드
      */
-    setResult(judgement(choice[userChoice], computerChoice));
-    console.log("#############REsult########", result);
+    setResult(judgement(choice[String(userChoice)], computerChoice));    
+    console.log("오류!!!!!!!!!!!! ", choice[String(userChoice)]);
   }
 
   const judgement = (user, computer) => {
-    console.log("**********", user.name,
-       computer.name);
+    console.log("**********", user.name, computer.name);
     /**
      * 선생님 코드
      */

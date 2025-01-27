@@ -9,10 +9,24 @@
   width: 500px;
   
 }
+
 .item-img {
   width: 400px;
 }
+
 .main {
   display: flex;
   justify-content: center;
+}
+
+#tie {
+  border-color: black;
+}
+
+#win {
+  border-color: green;
+}
+
+#lose {
+  border-color: red;
 }

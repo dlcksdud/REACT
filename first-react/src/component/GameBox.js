@@ -8,9 +8,13 @@ const Game = (props) => {
   } else {
     result = props.result;
   }
-  console.log("@@@@@@@@@@result@@@@@@@@@@", result);
+  
+  function getBorderClass() {
+    return result == "비김" || result == null || result == "" ? "tie" : result == "win" ? "win" : "lose";
+  }
+
   return (
-    <div className='gameBox'>
+    <div className="gameBox" id={`${getBorderClass()}`}>
       <h1>{props.name}</h1>
 
       {/**
