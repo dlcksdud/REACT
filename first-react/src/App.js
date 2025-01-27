@@ -47,7 +47,7 @@ function App() {
      */ 
     setUserSelect(choice[userChoice]);
     let computerChoice = randomChoice();
-    setComputerSelect(choice[computerChoice]);
+    setComputerSelect(computerChoice);
     console.log("computerChoice ", computerChoice);
 
     // 결과 출력
@@ -78,9 +78,10 @@ function App() {
     /**
      * 선생님 코드
      */
-    setResult(judgement(choice[userChoice], choice[computerChoice]));
+    setResult(judgement(choice[userChoice], computerChoice));
 
   }
+
   const judgement = (user, computer) => {
     console.log("**********", user.name,
        computer.name);
@@ -90,8 +91,8 @@ function App() {
     if(user.name == computer.name) {
       return "비김";
     } else if(user.name == "Rock") return computer.name="Scissors"? "win":"lose"
-      else if(user.name == "Scissors") return computer.name == "Paper"?"win":"lose"  
-      else if(user.name == "Paper") return computer.name =="Rokc"? "win": "lose"
+      else if(user.name == "Scissors") return computer.name == "Paper"? "win":"lose"  
+      else if(user.name == "Paper") return computer.name =="Rock"? "win":"lose"
 
     /**
      * 내 코드
@@ -149,7 +150,7 @@ function App() {
     // console.log(randomItem);
     let final = itemArray[randomItem];
     // console.log(final);
-    return final;
+    return choice[final];
   }
 
   return (

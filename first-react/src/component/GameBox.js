@@ -3,12 +3,12 @@ import React from 'react'
 const Game = (props) => {
   console.log("props : ", props);
   let result;
-  if(props.name === "COMPUTER" && props.result !== "비김" && props.result !== null) {
+  if(props.name === "COMPUTER" && props.result !== "비김" && props.result !== null && props.result!=="") {
     result = props.result === "win" ? "lose":"win";
   } else {
     result = props.result;
   }
-  
+  console.log("@@@@@@@@@@result@@@@@@@@@@", result);
   return (
     <div className='gameBox'>
       <h1>{props.name}</h1>
