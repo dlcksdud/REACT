@@ -5,14 +5,17 @@
 
 import React from 'react'
 
-const Box = () => {
-  return (
-    <div className='box'>
-        Box1
-        <p>리사</p>
-    </div>
+const Box = (props) => {
+    console.log("props : ", props);
+    // props :  {name: '리사'}name: "리사"[[Prototype]]: Object
+    // props를 사용하면 dynamic한 값을 box에 전달할 수 있다.
+    return (
+        <div className='box'>
+            Box{props.num}
+            <p>{props.name}</p>
+        </div>
 
-  )
+    )
 }
 
 export default Box

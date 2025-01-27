@@ -7,8 +7,9 @@ function App() {
   return (
     <div>
       {/* 수입한 컴포넌트 삽입*/}
-      <Box/>
-      <Box/> 
+      <Box name="리사" num={1}/>
+      <Box name="제니" num={2}/>
+      <Box name="로제" num={3}/> 
       {/* 리액트의 장점 : 간편한 코드 */}
 
       <div className='box'>
