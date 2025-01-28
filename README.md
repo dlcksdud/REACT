@@ -54,6 +54,23 @@ constructor(props) {
 
 ### 2.1 **componentDidUpdate**
 - state가 update가 됐는지 알려주는 함수, 최신 업데이트 된 값을 받아볼 수 있음
+- function component에서는 useEffect의 []가 대신한다.
+  ```javascript
+    /**
+   * function component lifecycle
+   * class component에서 componentDidMount 작업 수행
+   * reder 후에 실행됨
+   * useEffect(() => {} , [])
+   * 마지막 [] array의 쓰임 : array안에 state값을 넣으면 state가 업데이트 되면 알려줌
+   */
+  useEffect(() => {
+    console.log("useEffect1 Fire!!!");
+  }, [])
+
+  useEffect(() => {
+    console.log("useEffect2 fire!!!!");
+  }, [counter2]); // counter2의 값이 udpate될 떄마다 호출됨
+  ```
 
 ## 3. Unmounting: component가 종료될 때 실행
 
