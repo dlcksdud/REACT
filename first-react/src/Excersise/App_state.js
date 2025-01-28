@@ -1,7 +1,8 @@
 // import './App.css';
 // State 사용하기'
 // react에서 제공해주는유용한 함수들을 react hook이라고 한다.
-import {useState} from "react";
+// useEffect : function component에서 lifecycle역할을 하는 것.
+import {useState, useEffect} from "react";
 
 // 버튼을 클릭할 때마다 숫자가 증가하도록
 // component의 장점 : js와 html을 한번에 쓸 수 있다는 것
@@ -20,11 +21,15 @@ import {useState} from "react";
  */
 function App() {
   let counter = 0;
+  let value = 0;
+  const [count, setCount] = useState(0);
   const [counter2, setCounter2] = useState(0);
   const increase = () => {
-    counter = counter + 1;
+    // counter = counter + 1;
+    // value = value + 2;
     // 함수가 끝날 때까지 기다렸다가 state바꾸는 함수들을 모아서 한번에 실행 -> 비동기적
     setCounter2(counter2 + 1);
+    setCount(count + 2);
 
     /**
      * counter는 계속 1인 인유?
@@ -45,9 +50,26 @@ function App() {
      * 9. state값은 update 된다.
      */
   }
+
+  /**
+   * function component lifecycle
+   * class component에서 componentDidMount 작업 수행
+   * reder 후에 실행됨
+   * useEffect(() => {} , [])
+   * 마지막 [] array의 쓰임 : array안에 state값을 넣으면 state가 업데이트 되면 알려줌
+   */
+  useEffect(() => {
+    console.log("useEffect1 Fire!!!");
+  }, [])
+
+  useEffect(() => {
+    console.log("useEffect2 fire!!!!", counter2, count);
+  }, [counter2, count]); // counter2의 값이 udpate될 떄마다 호출됨
+
   return (
     <div>
-      <div>{counter}</div>
+      {console.log("render")}
+      <div>{count}</div>
       <div>state: {counter2}</div>
       <button onClick={increase}>클릭</button>
     </div>

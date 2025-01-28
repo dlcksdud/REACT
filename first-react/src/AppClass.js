@@ -18,25 +18,46 @@ import BoxClass from './component/BoxClass';
 export default class AppClass extends Component {
 
     // consructure : class 생성 시 해주는 것
+    // state를 먼저 contructor에 만든다.
     constructor(props) {
         super(props)
         this.state={
             counter2: 0,
             num: 1,
             value: 0
-        }
+        };
+      // lifecycle 시험
+      console.log("contructor");
     }
 
     increase=() => {
         this.setState({counter2: this.state.counter2 + 1, value: this.state.value + 1});
+        // lifecycle 시험
+        console.log("increase fx", this.state);
     };
+
+    // lifecycle 시험
+    // 주 작업 : api call
+    // render 끝나고 호출됨
+  componentDidMount() {
+    console.log("componentDidMount");
+  }
+
+  // lifecycle 시험
+  componentDidUpdate() {
+    console.log("componentDidUpdate", this.state); //최신 업데이트된 값을 받아볼 수 있음
+
+  }
   render() {
+    // lifecycle 시험
+    console.log("render");
     return (
       <div>
         {/**이 object 안에 있는 state를 가져오기 위해서 this.state를 써줘야 한다. */}
         <div>state: {this.state.counter2}</div>
         <button onClick={this.increase}>클릭</button>
-        <BoxClass num={this.state.value}></BoxClass>
+        {/* 어떤 조건에서 BoxClass가 사라지도록 */}
+        {this.state.counter2 < 3 && <BoxClass num={this.state.value}></BoxClass>}
       </div>
     )
   }
