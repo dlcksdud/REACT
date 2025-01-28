@@ -1,6 +1,7 @@
+// 선생님 코드 //
 import { useState } from "react";
-import './App.css';
-import Box from "./component/Box";
+import './App_rsp_game_t.css';
+import Box from "../component/GameBox_t";
 
 // 1. 박스 2개 (타이틀,사진, 결과)
 //2. 가위 바위 보 버튼이 있다

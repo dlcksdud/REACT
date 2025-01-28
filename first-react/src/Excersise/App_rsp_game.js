@@ -24,7 +24,7 @@ const choice = {
   paper: {
     name: "Paper",
     img : "보 이미지"
-  }
+  },
 };
 
 function App() {

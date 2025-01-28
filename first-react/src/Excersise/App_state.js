@@ -1,4 +1,4 @@
-import './App.css';
+// import './App.css';
 // State 사용하기'
 // react에서 제공해주는유용한 함수들을 react hook이라고 한다.
 import {useState} from "react";

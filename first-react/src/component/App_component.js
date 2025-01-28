@@ -1,7 +1,7 @@
 // import logo from './logo.svg';
 import './App.css';
 // 만들어준 Box 수입
-import Box from "../component/Box_1"
+import Box from "../component/Box_component"
 
 function App() {
   return (
