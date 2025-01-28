@@ -70,6 +70,9 @@ constructor(props) {
   useEffect(() => {
     console.log("useEffect2 fire!!!!");
   }, [counter2]); // counter2의 값이 udpate될 떄마다 호출됨
+
+  // [] 빈 array에서는 componentDidMount처럼 작동
+  // [conter2, value] 처럼 state값을 넣으면 componentDidUpdate의 기능도 동시에 한다.
   ```
 
 ## 3. Unmounting: component가 종료될 때 실행
