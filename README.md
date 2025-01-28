@@ -23,6 +23,7 @@ React 컴포넌트는 다음 세 가지 주요 단계로 나뉩니다:
 3. Unmounting (컴포넌트 종료)
 
 ---
+- 아래의 함수들은 class component에서만 사용되고 function component에서는 쓸 수 없다.
 
 ## 1. Mounting: 컴포넌트가 시작될 때 실행
 Mounting은 컴포넌트가 생성되고 DOM에 추가되는 과정입니다.
