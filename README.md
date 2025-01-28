@@ -12,7 +12,7 @@
 1. React 강의 수강 후 현재 repository를 완성하기
 2. [reactive-board repository](https://github.com/dlcksdud/reactive-board)의 HTML, JS로 이루어진 front-end를 React로 업그레이드하기
 
-
+---
 
 # React lifecycle (class component ver.)
 ![React lifecycle](./react_lifecycle.jpeg)
@@ -22,7 +22,7 @@ React 컴포넌트는 다음 세 가지 주요 단계로 나뉩니다:
 2. Updating (컴포넌트 업데이트)
 3. Unmounting (컴포넌트 종료)
 
----
+
 
 ## 1. Mounting: 컴포넌트가 시작될 때 실행
 Mounting은 컴포넌트가 생성되고 DOM에 추가되는 과정입니다.
