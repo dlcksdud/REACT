@@ -1,6 +1,7 @@
 import './App.css';
 import { useEffect, useState } from 'react';
 import axios from "axios"; // npm install axios
+import WeatherBox from './component/WeatherBox';
 
 /**
  * [날씨앱 만들기]
@@ -56,10 +57,8 @@ function App() {
 
   return (
     <div>
-      <h1>도시명 : {city}</h1>
-      <h2>상태 : {cloud}</h2>
-      <p>화씨 : {tempF}</p>
-      <p>섭씨 : {tempC}</p>
+        <WeatherBox/>
+     
     </div>
   );
 }
