@@ -17,10 +17,12 @@ import WeatherButton from './component/WeatherButton';
  */
 function App() {
   // 1. 앱이 실행되자마자 현재 위치 기반의 날씨가 보인다.
-  const [city, setCity] = useState("");
-  const [cloud, setCloud] = useState("");
-  const [tempF, setTempF] = useState("");
-  const [tempC, setTempC] = useState("");
+  const [weather, setWeather] = useState('');
+
+//   const [city, setCity] = useState("");
+//   const [cloud, setCloud] = useState("");
+//   const [tempF, setTempF] = useState("");
+//   const [tempC, setTempC] = useState("");
 
   useEffect(() => {
     getCurrentLocation();
@@ -42,16 +44,18 @@ function App() {
   // 날씨 api 이용 : UseWeatherAPI.md 참고
   const getCurrentLocationWeather = (latitude, longitude) => {
     // https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
-    axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=e8c53d0373070c7d2fc6f2a23d108dbb`)
+    // &units=metric 붙이면 섭씨온도 출력 가능
+    axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=e8c53d0373070c7d2fc6f2a23d108dbb&units=metric`)
     .then((response) => {
         console.log("response : ", response);
         console.log("도시명 : ", response.data.name);
         console.log("구름 : ", response.data.weather[0].description);
         console.log("화씨 : ", response.data.main.temp);
-        setCity(response.data.name);
-        setCloud(response.data.weather[0].description);
-        setTempF(response.data.main.temp / 10);
-        setTempC(((tempF - 32) * 5 / 9).toFixed(1));
+        setWeather(response.data);
+        // setCity(response.data.name);
+        // setCloud(response.data.weather[0].description);
+        // setTempF((response.data.main.temp * 9/5) + 32).toFixed(1);
+        // setTempC(response.data.main.temp);
     })
     .catch((error) => {
         console.log("error : ", error);
@@ -60,8 +64,10 @@ function App() {
 
   return (
     <div>
-        <WeatherBox/>
-        <WeatherButton/>
+        <div className='container'>
+            <WeatherBox weather={weather}/>
+            <WeatherButton/>
+        </div>
     </div>
   );
 }
