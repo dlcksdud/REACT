@@ -1,7 +1,10 @@
 import './App.css';
+// react bootstrap
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect, useState } from 'react';
 import axios from "axios"; // npm install axios
 import WeatherBox from './component/WeatherBox';
+import WeatherButton from './component/WeatherButton';
 
 /**
  * [날씨앱 만들기]
@@ -58,7 +61,7 @@ function App() {
   return (
     <div>
         <WeatherBox/>
-     
+        <WeatherButton/>
     </div>
   );
 }

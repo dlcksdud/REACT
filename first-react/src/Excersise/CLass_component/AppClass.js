@@ -13,7 +13,7 @@ class component를 더 많이 사용하는 이유.
 
  */
 import React, { Component } from 'react'
-import BoxClass from './component/BoxClass';
+import BoxClass from '../../component/Class_coponent/BoxClass';
 
 export default class AppClass extends Component {
 
