@@ -4,7 +4,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect, useState } from 'react';
 import axios from "axios"; // npm install axios
 import WeatherBox from './component/WeatherBox';
-import WeatherButton from './component/WeatherButton';
+import {WeatherButton} from './component/WeatherButton';
+import { Button } from 'react-bootstrap';
+
 
 /**
  * [날씨앱 만들기]
@@ -23,6 +25,7 @@ function App() {
 //   const [cloud, setCloud] = useState("");
 //   const [tempF, setTempF] = useState("");
 //   const [tempC, setTempC] = useState("");
+
 
   useEffect(() => {
     getCurrentLocation();
@@ -62,11 +65,39 @@ function App() {
     });
   };
 
+  // 같은 api를 네번이나 호출하면 이거를 줄여볼 수있을까?
+  // 위도와 경도만 넣으면 되는데..
+  // 같은 function을 호출하면서 위도와 경도만 다르게? 넣어서?
+  const getSelectLocationWeather = (city) => {
+    console.log("city?? ", city);
+    //https://api.openweathermap.org/data/2.5/weather?q=Bangkok,TH&appid=YOUR_API_KEY
+    axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=e8c53d0373070c7d2fc6f2a23d108dbb&units=metric`)
+    .then((response) => {
+        console.log("response.data : ", response.data);
+        console.log("도시명 : ", response.data.name);
+        console.log("구름 : ", response.data.weather[0].description);
+        console.log("섭씨 : ", response.data.main.temp);
+        setWeather(response.data);
+
+    })
+    .catch((error) => {
+        console.log("error : ", error);
+    });
+    
+  }
+
+
   return (
     <div>
         <div className='container'>
             <WeatherBox weather={weather}/>
-            <WeatherButton/>
+            <div className='weather-btn'>
+                <Button onClick={() => getCurrentLocation()} variant="warning">Current Location</Button>
+                <WeatherButton onClick={() => getSelectLocationWeather("Paris")} city={"Paris"}></WeatherButton>
+                <WeatherButton onClick={() => getSelectLocationWeather("Shanghai")} city={"Shanghai"}></WeatherButton>
+                <WeatherButton onClick={() => getSelectLocationWeather("Bangkok")} city={"Bangkok"}></WeatherButton>
+                <WeatherButton onClick={() => getSelectLocationWeather("New york")} city={"New york"}></WeatherButton>
+            </div>
         </div>
     </div>
   );

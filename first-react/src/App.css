@@ -23,3 +23,7 @@ body {
     flex-direction: column;
     align-items: center;
 }
+
+.weather-btn {
+    display: flex;
+}
