@@ -54,7 +54,7 @@ function App() {
   /**
    * function component lifecycle
    * class component에서 componentDidMount 작업 수행
-   * reder 후에 실행됨
+   * render 후에 실행됨
    * useEffect(() => {} , [])
    * 마지막 [] array의 쓰임 : array안에 state값을 넣으면 state가 업데이트 되면 알려줌
    */
