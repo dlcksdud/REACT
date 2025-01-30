@@ -1,6 +1,6 @@
 /**가위바위보 게임 class component로 바꾸기 */
 import React, { Component } from 'react'
-import './Excersise/App_rsp_game_t.css';
+import './Excersise/RspGameProject/App_rsp_game_t.css';
 import Box from "../../component/Class_coponent/GameBoxClass.js";
 
 const choice = {
