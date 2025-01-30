@@ -1,7 +1,7 @@
 import './App_weatherApp.css';
 // react bootstrap
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useEffect, useState, CSSProperties } from 'react';
+import { useEffect, useState } from 'react';
 import axios from "axios"; // npm install axios
 import WeatherBox from './component/WeatherAppProject/WeatherBox.js';
 import {WeatherButton} from './component/WeatherAppProject/WeatherButton_t.js';
@@ -29,6 +29,9 @@ function App() {
   // 2. spelling 실수 방지
   const  cities = ['Paris', "Shanghai", 'Bangkok', 'New york'];
   const [city, setCity] = useState('');
+
+  // 로딩스피너
+  const [loading, setLoading] = useState(false);
 
 
   // 상황에 맞춰서 호출을 달리 해준다.
@@ -65,8 +68,12 @@ function App() {
   const getCurrentLocationWeather = (latitude, longitude) => {
     // https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
     // &units=metric 붙이면 섭씨온도 출력 가능
+
+    setLoading(true);
+
     axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=e8c53d0373070c7d2fc6f2a23d108dbb&units=metric`)
     .then((response) => {
+        setLoading(false);
         console.log("response : ", response);
         console.log("도시명 : ", response.data.name);
         console.log("구름 : ", response.data.weather[0].description);
@@ -83,6 +90,9 @@ function App() {
   };
 
   const getWeatherByCity = () => {
+
+    setLoading(true);
+
     //https://api.openweathermap.org/data/2.5/weather?q=Bangkok,TH&appid=YOUR_API_KEY
     axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=e8c53d0373070c7d2fc6f2a23d108dbb&units=metric`)
     .then((response) => {
@@ -99,30 +109,25 @@ function App() {
 
   }
 
-  // 로딩스피너
-  const override: CSSProperties = {
-    display: "block",
-    margin: "0 auto",
-    borderColor: "red",
-  };
-
 
   return (
     <div>
         <div className='container'>
+            <ClipLoader
+              color="Blue"
+              // loading은 boolean
+              loading={loading}
+              css=""
+              size={150}
+              aria-label="Loading Spinner"
+              data-testid="loader"
+            />
             <WeatherBox weather={weather}/>
             <Button onClick={() => getCurrentLocation()} variant="warning">Current Location</Button>
             <WeatherButton cities={cities} setCity={setCity}/>
         </div>
 
-        <ClipLoader
-          color="Blue"
-          loading="true"
-          cssOverride={override}
-          size={150}
-          aria-label="Loading Spinner"
-          data-testid="loader"
-      />
+        
     </div>
   );
 }
