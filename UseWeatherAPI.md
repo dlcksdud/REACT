@@ -12,4 +12,4 @@
 - user는 데이터가 로딩될 떄 로딩 스피너를 볼 수 있다.
 
 ## 3. App과 Component의 관계
-![App and Component](./App과 component의 관계.png)
+![App and Component](./AppAndComponent.png)
