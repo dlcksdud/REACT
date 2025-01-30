@@ -11,4 +11,5 @@
 - user는 다른 도시 버튼을 클릭하면 해당 도시의 날씨 정보를 볼 수 있다.
 - user는 데이터가 로딩될 떄 로딩 스피너를 볼 수 있다.
 
-
+## 3. App과 Component의 관계
+![App and Component](./App과 component의 관계.png)
