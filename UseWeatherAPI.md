@@ -13,3 +13,11 @@
 
 ## 3. App과 Component의 관계
 ![App and Component](./AppAndComponent.png)
+- state weather은 App.js에 있고, city weather data는 weatherButton에 있음
+- 부모가 자식한테는 Data를 넘길 수 있음
+- 자식이 부모한테는 props를 넘길 수 없음
+- 해결방법
+    - 부모가 모든 함수와 state를 가지게 하고
+    - props로 자식에게 넘겨주게 한다.
+    - 앱이 모든걸 가지고 있고 필요한 정보는 자식들에게 넘겨준다.
+    
