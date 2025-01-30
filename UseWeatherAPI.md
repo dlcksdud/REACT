@@ -1,5 +1,5 @@
 # Weather Open API로 날씨앱 만들기
----
+
 ## 1. Weather API 문서
 [Weather open API 문서 링크](https://openweathermap.org/api)
 - api key를 얻기 위해서 사이트에 회원가입하여 로그인한다.
@@ -20,4 +20,3 @@
     - 부모가 모든 함수와 state를 가지게 하고
     - props로 자식에게 넘겨주게 한다.
     - 앱이 모든걸 가지고 있고 필요한 정보는 자식들에게 넘겨준다.
-    

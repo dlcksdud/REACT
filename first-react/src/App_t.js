@@ -25,11 +25,25 @@ function App() {
   // 1. 도시 정보가 여러개일 때를 대비
   // 2. spelling 실수 방지
   const  cities = ['Paris', "Shanghai", 'Bangkok', 'New york'];
+  const [city, setCity] = useState('');
 
 
+  // 상황에 맞춰서 호출을 달리 해준다.
   useEffect(() => {
-    getCurrentLocation();
-  }, [])
+    if(city == "") {
+        getCurrentLocation();
+    } else {
+        getWeatherByCity();
+    }
+  }, [city])
+
+  // WeatherButton.js로 보낸 setCity가 잘 작동하는지 알아볼 방법
+  // city state를 주시하고 있다가 바뀌면 useEffect가 호출된다.
+//   useEffect(() => {
+//     // console.log("city?", city);
+//     getWeatherByCity();
+// }, [city]);
+
 
   const getCurrentLocation= () => {
     console.log("getCureentLocation");
@@ -53,7 +67,7 @@ function App() {
         console.log("response : ", response);
         console.log("도시명 : ", response.data.name);
         console.log("구름 : ", response.data.weather[0].description);
-        console.log("화씨 : ", response.data.main.temp);
+        console.log("섭씨 : ", response.data.main.temp);
         setWeather(response.data);
         // setCity(response.data.name);
         // setCloud(response.data.weather[0].description);
@@ -65,11 +79,7 @@ function App() {
     });
   };
 
-  // 같은 api를 네번이나 호출하면 이거를 줄여볼 수있을까?
-  // 위도와 경도만 넣으면 되는데..
-  // 같은 function을 호출하면서 위도와 경도만 다르게? 넣어서?
-  const getSelectLocationWeather = (city) => {
-    console.log("city?? ", city);
+  const getWeatherByCity = () => {
     //https://api.openweathermap.org/data/2.5/weather?q=Bangkok,TH&appid=YOUR_API_KEY
     axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=e8c53d0373070c7d2fc6f2a23d108dbb&units=metric`)
     .then((response) => {
@@ -83,7 +93,7 @@ function App() {
     .catch((error) => {
         console.log("error : ", error);
     });
-    
+
   }
 
 
@@ -91,14 +101,8 @@ function App() {
     <div>
         <div className='container'>
             <WeatherBox weather={weather}/>
-            {/* <div className='weather-btn'>
-                <Button onClick={() => getCurrentLocation()} variant="warning">Current Location</Button>
-                <WeatherButton onClick={() => getSelectLocationWeather("Paris")} city={"Paris"}></WeatherButton>
-                <WeatherButton onClick={() => getSelectLocationWeather("Shanghai")} city={"Shanghai"}></WeatherButton>
-                <WeatherButton onClick={() => getSelectLocationWeather("Bangkok")} city={"Bangkok"}></WeatherButton>
-                <WeatherButton onClick={() => getSelectLocationWeather("New york")} city={"New york"}></WeatherButton>
-            </div> */}
-            <WeatherButton cities={cities}/>
+            <Button onClick={() => getCurrentLocation()} variant="warning">Current Location</Button>
+            <WeatherButton cities={cities} setCity={setCity}/>
         </div>
     </div>
   );

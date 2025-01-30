@@ -12,18 +12,24 @@ import { Button } from 'react-bootstrap';
  * 사이트 component 카테고리에서 골라 쓸 수 있다.
  */
 
-const WeatherButton = ({cities}) => {  
+const WeatherButton = ({cities, setCity}) => {  
     console.log("cities ? ", cities);
+
+    
   
 
   return (
     <div>
-        <Button variant="warning">Current Location</Button>
+        
         {/** Array 함수 : 리액트에서 배열을 UI에 프린트할 때 많이 쓰임
          * 영상 자료 : https://youtu.be/kLYdgg0ljTk
         */
-            cities.map((item) => (
-                <Button variant='warning'>{item}</Button>
+            cities.map((item, index) => (
+                <Button 
+                    variant='warning'
+                    key={index}
+                    onClick={() => setCity(item)}
+                >{item}</Button>
             ))
         }
     </div>
