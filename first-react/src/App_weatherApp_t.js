@@ -96,6 +96,7 @@ function App() {
     //https://api.openweathermap.org/data/2.5/weather?q=Bangkok,TH&appid=YOUR_API_KEY
     axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=e8c53d0373070c7d2fc6f2a23d108dbb&units=metric`)
     .then((response) => {
+        setLoading(false);
         console.log("response.data : ", response.data);
         console.log("도시명 : ", response.data.name);
         console.log("구름 : ", response.data.weather[0].description);

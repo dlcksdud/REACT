@@ -20,3 +20,12 @@
     - 부모가 모든 함수와 state를 가지게 하고
     - props로 자식에게 넘겨주게 한다.
     - 앱이 모든걸 가지고 있고 필요한 정보는 자식들에게 넘겨준다.
+
+## 4. 로딩 스피너 (Loading Spinner)
+[Loading Spinner 적용 링크](https://www.npmjs.com/package/react-spinners)
+``` shell script
+npm install --save react-spinners
+```
+``` javascript
+import ClipLoader from "react-spinners/ClipLoader";
+```
