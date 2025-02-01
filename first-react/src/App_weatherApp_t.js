@@ -72,7 +72,7 @@ function App() {
 
     setLoading(true);
 
-    axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=e8c53d0373070c7d2fc6f2a23d108dbb&units=metric`)
+      axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=&units=metric`)
     .then((response) => {
         setLoading(false);
         console.log("response : ", response);
@@ -95,7 +95,7 @@ function App() {
     setLoading(true);
 
     //https://api.openweathermap.org/data/2.5/weather?q=Bangkok,TH&appid=YOUR_API_KEY
-    axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=e8c53d0373070c7d2fc6f2a23d108dbb&units=metric`)
+    axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=&units=metric`)
     .then((response) => {
         setLoading(false);
         console.log("response.data : ", response.data);
