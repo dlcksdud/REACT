@@ -113,22 +113,21 @@ function App() {
 
   return (
     <div>
-        <div className='container'>
+        {loading ? 
+        (<div className='container'>
             <ClipLoader
               color="Blue"
               // loading은 boolean
               loading={loading}
-              css=""
               size={150}
               aria-label="Loading Spinner"
               data-testid="loader"
-            />
+            /></div>) :
+        (<div className='container'>
             <WeatherBox weather={weather}/>
             <Button onClick={() => getCurrentLocation()} variant="warning">Current Location</Button>
             <WeatherButton cities={cities} setCity={setCity}/>
-        </div>
-
-        
+        </div>)}
     </div>
   );
 }
