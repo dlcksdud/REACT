@@ -19,6 +19,7 @@ import ClipLoader from "react-spinners/ClipLoader";
  * 5. 현재위치버튼(current location)을 누르면 다시 현재위치 기반의 날씨가 나온다.
  * 6. 데이터를 들고 오는 동안 로딩스피너가 돈다.
  * 6.1 로딩 스피너 : https://www.npmjs.com/package/react-spinners
+ * 7. 버튼 클릭 시 : 색깔이 변하도록 하여 클릭한지 알 수 있도록 변경
  */
 function App() {
   // 1. 앱이 실행되자마자 현재 위치 기반의 날씨가 보인다.
