@@ -35,7 +35,7 @@ import {Routes, Route, Link} from "react-router-dom";
 </Routes>
 ```
 
-### useNavigate
+## useNavigate
 ```javascript
 import {useNavigate} from 'react-router-dom';
 
