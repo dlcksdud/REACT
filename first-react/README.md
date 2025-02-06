@@ -1,70 +1,31 @@
-# Getting Started with Create React App
+# Weather Open API로 날씨앱 만들기
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 1. Weather API 문서
+[Weather open API 문서 링크](https://openweathermap.org/api)
+- api key를 얻기 위해서 사이트에 회원가입하여 로그인한다.
 
-## Available Scripts
 
-In the project directory, you can run:
+## 2. Logic
+- user는 현재위치의 날씨를 볼 수 있다. (지역, 온도, 날씨, 상태)
+- user는 다른 도시의 버튼들을 볼 수 있다.
+- user는 다른 도시 버튼을 클릭하면 해당 도시의 날씨 정보를 볼 수 있다.
+- user는 데이터가 로딩될 떄 로딩 스피너를 볼 수 있다.
 
-### `npm start`
+## 3. App과 Component의 관계
+![App and Component](../AppAndComponent.png)
+- state weather은 App.js에 있고, city weather data는 weatherButton에 있음
+- 부모가 자식한테는 Data를 넘길 수 있음
+- 자식이 부모한테는 props를 넘길 수 없음
+- 해결방법
+    - 부모가 모든 함수와 state를 가지게 하고
+    - props로 자식에게 넘겨주게 한다.
+    - 앱이 모든걸 가지고 있고 필요한 정보는 자식들에게 넘겨준다.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 4. 로딩 스피너 (Loading Spinner)
+[Loading Spinner 적용 링크](https://www.npmjs.com/package/react-spinners)
+``` shell script
+npm install --save react-spinners
+```
+``` javascript
+import ClipLoader from "react-spinners/ClipLoader";
+```
