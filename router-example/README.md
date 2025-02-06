@@ -31,6 +31,19 @@ import {Routes, Route, Link} from "react-router-dom";
 // 중략
 <Routes>
     <Route path="/" element={<Home />} />
-    <Route path="about" element={<About />} />
+    <Route path="/about" element={<About />} />
 </Routes>
+```
+
+### useNavigate
+```javascript
+import {useNavigate} from 'react-router-dom';
+
+// 중략
+const navigate = useNavigate();
+
+  const goToHomePage=()=> {
+      navigate('/')
+  };
+// 하략
 ```
