@@ -37,7 +37,6 @@ function App() {
 
   // 버튼 클릭 시 : 색깔이 변하도록 하여 어떤 걸 클릭하고 있는지 알 수 있게
   const [ing, setIng] = useState('');
-
   const [selectedCity, setSelectedCity] = useState(null);
   
 
