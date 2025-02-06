@@ -1,17 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-// import App from './App_component.js';
-// import App from './AppClass.js';
-import App from './Excersise/WeatherAppProject/App_weatherApp_t';
-// import App from './App.js';
+import App from './App';
 import reportWebVitals from './reportWebVitals';
-/**
- * react 기본 setting
- * /**
- * index.js의 역할을 index.html 파일과 App.js를 연결하는 것
- * 따라서 우리가 할 모든 작업은 App.js에 들어간다.
- */
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

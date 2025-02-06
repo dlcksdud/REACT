@@ -1,10 +1,10 @@
-import './App_weatherApp.css';
+import '../../Excersise/WeatherAppProject/App_weatherApp.css';
 // react bootstrap
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect, useState } from 'react';
 import axios from "axios"; // npm install axios
-import WeatherBox from './component/WeatherAppProject/WeatherBox.js';
-import {WeatherButton} from './component/WeatherAppProject/WeatherButton_t.js';
+import WeatherBox from '../../component/WeatherAppProject/WeatherBox.js';
+import {WeatherButton} from '../../component/WeatherAppProject/WeatherButton_t.js';
 import { Button } from 'react-bootstrap';
 // 로딩 스피너 : npm install --save react-spinners
 import ClipLoader from "react-spinners/ClipLoader";

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button } from 'react-bootstrap';
-import '../../../src/App_weatherApp.css';
+import '../../Excersise/WeatherAppProject/App_weatherApp.css';
 import { useState } from 'react';
 
 
