@@ -37,4 +37,6 @@ npm install react-bootstrap bootstrap
 ``` javascript
 // 예시
 import { Button } from 'react-bootstrap';
+// css import
+
 ```
