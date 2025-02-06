@@ -35,12 +35,22 @@ function App() {
   const [loading, setLoading] = useState(false);
 
 
+  // 버튼 클릭 시 : 색깔이 변하도록 하여 어떤 걸 클릭하고 있는지 알 수 있게
+  const [ing, setIng] = useState('');
+
+  const [selectedCity, setSelectedCity] = useState(null);
+  
+
+
   // 상황에 맞춰서 호출을 달리 해준다.
   useEffect(() => {
     if(city == "") {
         getCurrentLocation();
     } else {
+        setIng('');
         getWeatherByCity();
+        console.log("city? : ", city);
+        setSelectedCity(city);
     }
   }, [city])
 
@@ -53,6 +63,10 @@ function App() {
 
 
   const getCurrentLocation= () => {
+
+    setIng('ing');
+    setSelectedCity('');
+
     console.log("getCureentLocation");
     // 현재위치 가져오기(위도, 경도): js의 navigator 사용
     // https://www.w3schools.com/html/html5_geolocation.asp
@@ -72,7 +86,8 @@ function App() {
 
     setLoading(true);
 
-      axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=&units=metric`)
+
+      axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=e8c53d0373070c7d2fc6f2a23d108dbb&units=metric`)
     .then((response) => {
         setLoading(false);
         console.log("response : ", response);
@@ -95,7 +110,8 @@ function App() {
     setLoading(true);
 
     //https://api.openweathermap.org/data/2.5/weather?q=Bangkok,TH&appid=YOUR_API_KEY
-    axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=&units=metric`)
+    axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=e8c53d0373070c7d2fc6f2a23d108dbb&units=metric`)
+
     .then((response) => {
         setLoading(false);
         console.log("response.data : ", response.data);
@@ -126,8 +142,9 @@ function App() {
             /></div>) :
         (<div className='container'>
             <WeatherBox weather={weather}/>
-            <Button onClick={() => getCurrentLocation()} variant="warning">Current Location</Button>
-            <WeatherButton cities={cities} setCity={setCity}/>
+            <Button id={`${ing}`}  onClick={() => getCurrentLocation()} variant="warning">Current Location</Button>
+            <WeatherButton selectedCity={selectedCity}  cities={cities} setCity={setCity}/>
+
         </div>)}
     </div>
   );
