@@ -38,5 +38,5 @@ npm install react-bootstrap bootstrap
 // 예시
 import { Button } from 'react-bootstrap';
 // css import
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 ```
