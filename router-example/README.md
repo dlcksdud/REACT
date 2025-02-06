@@ -46,4 +46,17 @@ const navigate = useNavigate();
       navigate('/')
   };
 // 하략
+<button onClick={goToHomePage}>Go to Homepage</button>
+```
+
+## url 디자인 : RESTful Routes
+![RESTful Routes](./restfuleRoutes.png)
+- url 디자인 패턴
+- HTTP Verb : Get, Post, Put, Delete
+- :(colon) : parameter 값, 가변적인 값
+- parameter값 받는 법
+```javascript
+import { useParams } from 'react-router-dom'
+// 중략
+const params = useParams();
 ```
