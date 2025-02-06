@@ -1,13 +1,11 @@
-import '../../Excersise/WeatherAppProject/App_weatherApp.css';
+import './App_weatherApp.css';
 // react bootstrap
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect, useState } from 'react';
 import axios from "axios"; // npm install axios
-import WeatherBox from '../../component/WeatherAppProject/WeatherBox.js';
-import {WeatherButton} from '../../component/WeatherAppProject/WeatherButton_t.js';
+import WeatherBox from './component/WeatherBox';
+import {WeatherButton} from './component/WeatherButton';
 import { Button } from 'react-bootstrap';
-// 로딩 스피너 : npm install --save react-spinners
-import ClipLoader from "react-spinners/ClipLoader";
 
 
 /**
@@ -18,54 +16,22 @@ import ClipLoader from "react-spinners/ClipLoader";
  * 4. 도시버튼을 클릭할 때마다 도시별 날씨가 나온다.
  * 5. 현재위치버튼(current location)을 누르면 다시 현재위치 기반의 날씨가 나온다.
  * 6. 데이터를 들고 오는 동안 로딩스피너가 돈다.
- * 6.1 로딩 스피너 : https://www.npmjs.com/package/react-spinners
- * 7. 버튼 클릭 시 : 색깔이 변하도록 하여 클릭한지 알 수 있도록 변경
  */
 function App() {
   // 1. 앱이 실행되자마자 현재 위치 기반의 날씨가 보인다.
   const [weather, setWeather] = useState('');
 
-  // array로 도시정보를 보낸 이유
-  // 1. 도시 정보가 여러개일 때를 대비
-  // 2. spelling 실수 방지
-  const  cities = ['Paris', "Shanghai", 'Bangkok', 'New york'];
-  const [city, setCity] = useState('');
-
-  // 로딩스피너
-  const [loading, setLoading] = useState(false);
+//   const [city, setCity] = useState("");
+//   const [cloud, setCloud] = useState("");
+//   const [tempF, setTempF] = useState("");
+//   const [tempC, setTempC] = useState("");
 
 
-  // 버튼 클릭 시 : 색깔이 변하도록 하여 어떤 걸 클릭하고 있는지 알 수 있게
-  const [ing, setIng] = useState('');
-  const [selectedCity, setSelectedCity] = useState(null);
-  
-
-
-  // 상황에 맞춰서 호출을 달리 해준다.
   useEffect(() => {
-    if(city == "") {
-        getCurrentLocation();
-    } else {
-        setIng('');
-        getWeatherByCity();
-        console.log("city? : ", city);
-        setSelectedCity(city);
-    }
-  }, [city])
-
-  // WeatherButton.js로 보낸 setCity가 잘 작동하는지 알아볼 방법
-  // city state를 주시하고 있다가 바뀌면 useEffect가 호출된다.
-//   useEffect(() => {
-//     // console.log("city?", city);
-//     getWeatherByCity();
-// }, [city]);
-
+    getCurrentLocation();
+  }, [])
 
   const getCurrentLocation= () => {
-
-    setIng('ing');
-    setSelectedCity('');
-
     console.log("getCureentLocation");
     // 현재위치 가져오기(위도, 경도): js의 navigator 사용
     // https://www.w3schools.com/html/html5_geolocation.asp
@@ -82,17 +48,12 @@ function App() {
   const getCurrentLocationWeather = (latitude, longitude) => {
     // https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
     // &units=metric 붙이면 섭씨온도 출력 가능
-
-    setLoading(true);
-
-
-      axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=e8c53d0373070c7d2fc6f2a23d108dbb&units=metric`)
+    axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=e8c53d0373070c7d2fc6f2a23d108dbb&units=metric`)
     .then((response) => {
-        setLoading(false);
         console.log("response : ", response);
         console.log("도시명 : ", response.data.name);
         console.log("구름 : ", response.data.weather[0].description);
-        console.log("섭씨 : ", response.data.main.temp);
+        console.log("화씨 : ", response.data.main.temp);
         setWeather(response.data);
         // setCity(response.data.name);
         // setCloud(response.data.weather[0].description);
@@ -104,15 +65,14 @@ function App() {
     });
   };
 
-  const getWeatherByCity = () => {
-
-    setLoading(true);
-
+  // 같은 api를 네번이나 호출하면 이거를 줄여볼 수있을까?
+  // 위도와 경도만 넣으면 되는데..
+  // 같은 function을 호출하면서 위도와 경도만 다르게? 넣어서?
+  const getSelectLocationWeather = (city) => {
+    console.log("city?? ", city);
     //https://api.openweathermap.org/data/2.5/weather?q=Bangkok,TH&appid=YOUR_API_KEY
     axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=e8c53d0373070c7d2fc6f2a23d108dbb&units=metric`)
-
     .then((response) => {
-        setLoading(false);
         console.log("response.data : ", response.data);
         console.log("도시명 : ", response.data.name);
         console.log("구름 : ", response.data.weather[0].description);
@@ -123,28 +83,22 @@ function App() {
     .catch((error) => {
         console.log("error : ", error);
     });
-
+    
   }
 
 
   return (
     <div>
-        {loading ? 
-        (<div className='container'>
-            <ClipLoader
-              color="Blue"
-              // loading은 boolean
-              loading={loading}
-              size={150}
-              aria-label="Loading Spinner"
-              data-testid="loader"
-            /></div>) :
-        (<div className='container'>
+        <div className='container'>
             <WeatherBox weather={weather}/>
-            <Button id={`${ing}`}  onClick={() => getCurrentLocation()} variant="warning">Current Location</Button>
-            <WeatherButton selectedCity={selectedCity}  cities={cities} setCity={setCity}/>
-
-        </div>)}
+            <div className='weather-btn'>
+                <Button onClick={() => getCurrentLocation()} variant="warning">Current Location</Button>
+                <WeatherButton onClick={() => getSelectLocationWeather("Paris")} city={"Paris"}></WeatherButton>
+                <WeatherButton onClick={() => getSelectLocationWeather("Shanghai")} city={"Shanghai"}></WeatherButton>
+                <WeatherButton onClick={() => getSelectLocationWeather("Bangkok")} city={"Bangkok"}></WeatherButton>
+                <WeatherButton onClick={() => getSelectLocationWeather("New york")} city={"New york"}></WeatherButton>
+            </div>
+        </div>
     </div>
   );
 }

@@ -1,31 +1,65 @@
-# Weather Open API로 날씨앱 만들기
+# React lifecycle (class component ver.)
+![React lifecycle](./react_lifecycle.jpeg)
 
-## 1. Weather API 문서
-[Weather open API 문서 링크](https://openweathermap.org/api)
-- api key를 얻기 위해서 사이트에 회원가입하여 로그인한다.
+React 컴포넌트는 다음 세 가지 주요 단계로 나뉩니다:
+1. Mounting (컴포넌트 시작)
+2. Updating (컴포넌트 업데이트)
+3. Unmounting (컴포넌트 종료)
 
 
-## 2. Logic
-- user는 현재위치의 날씨를 볼 수 있다. (지역, 온도, 날씨, 상태)
-- user는 다른 도시의 버튼들을 볼 수 있다.
-- user는 다른 도시 버튼을 클릭하면 해당 도시의 날씨 정보를 볼 수 있다.
-- user는 데이터가 로딩될 떄 로딩 스피너를 볼 수 있다.
 
-## 3. App과 Component의 관계
-![App and Component](../AppAndComponent.png)
-- state weather은 App.js에 있고, city weather data는 weatherButton에 있음
-- 부모가 자식한테는 Data를 넘길 수 있음
-- 자식이 부모한테는 props를 넘길 수 없음
-- 해결방법
-    - 부모가 모든 함수와 state를 가지게 하고
-    - props로 자식에게 넘겨주게 한다.
-    - 앱이 모든걸 가지고 있고 필요한 정보는 자식들에게 넘겨준다.
+## 1. Mounting: 컴포넌트가 시작될 때 실행
+Mounting은 컴포넌트가 생성되고 DOM에 추가되는 과정입니다.
 
-## 4. 로딩 스피너 (Loading Spinner)
-[Loading Spinner 적용 링크](https://www.npmjs.com/package/react-spinners)
-``` shell script
-npm install --save react-spinners
+### 1.1 **constructor**
+- 첫 번째로 실행되는 라이프사이클 함수.
+- 컴포넌트가 실행될 때 가장 먼저 호출됩니다.
+- 앱 실행 시 필요한 초기 작업들을 수행합니다.
+
+```javascript
+constructor(props) {
+  super(props);
+  this.state = {
+    count: 0,
+  };
+}
 ```
-``` javascript
-import ClipLoader from "react-spinners/ClipLoader";
-```
+
+### 1.2 **getDerivedStateFromProps**
+- state와 props를 동기화시켜주는 작업
+
+### 1.3 **render**
+- UI 그려주는 함수
+
+### 1.4 **componentDidMount**
+- UI가 setting이 다 되었을 때 알려주는 함수
+
+## 2. Updating:  state가 업데이트되고 ui 업데이트 될 때 실행
+
+### 2.1 **componentDidUpdate**
+- state가 update가 됐는지 알려주는 함수, 최신 업데이트 된 값을 받아볼 수 있음
+- function component에서는 useEffect의 []가 대신한다.
+  ```javascript
+    /**
+   * function component lifecycle
+   * class component에서 componentDidMount 작업 수행
+   * reder 후에 실행됨
+   * useEffect(() => {} , [])
+   * 마지막 [] array의 쓰임 : array안에 state값을 넣으면 state가 업데이트 되면 알려줌
+   */
+  useEffect(() => {
+    console.log("useEffect1 Fire!!!");
+  }, [])
+
+  useEffect(() => {
+    console.log("useEffect2 fire!!!!");
+  }, [counter2]); // counter2의 값이 udpate될 떄마다 호출됨
+
+  // [] 빈 array에서는 componentDidMount처럼 작동
+  // [conter2, value] 처럼 state값을 넣으면 componentDidUpdate의 기능도 동시에 한다.
+  ```
+
+## 3. Unmounting: component가 종료될 때 실행
+
+### 3.1 **componentWillUnmount**
+- component 종료시 실행되는 함수

@@ -1,5 +1,5 @@
 import './App_rsp_game.css';
-import Game from '../../component/RspGameProject/GameBox';
+import Game from './component/GameBox';
 import { useState } from 'react';
 
 /**
