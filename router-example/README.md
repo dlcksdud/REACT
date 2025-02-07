@@ -54,9 +54,36 @@ const navigate = useNavigate();
 - url 디자인 패턴
 - HTTP Verb : Get, Post, Put, Delete
 - :(colon) : parameter 값, 가변적인 값
-- parameter값 받는 법
+- parameter값 받는 법 (useParams)
 ```javascript
 import { useParams } from 'react-router-dom'
 // 중략
 const params = useParams();
+// 생략한 버전
+const {id} = useParams();
+```
+
+## useSearchParams
+```javascript
+import { useSearchParams } from 'react-router-dom'
+// 중략
+let [query, setQuery] = useSearchParams();
+console.log(query.get('q'));
+```
+
+## 보호해야 하는 페이지 : Redirect
+- 로그인 여부에 따라 보호해야 할 페이지에 사용 (Navigate)
+- Navigate와 useNavigate는 다름
+
+```javascript
+import {Navigate} from "react-router-dom";
+// 중략
+const [authenticate, setAuthenticate] = useState(false);
+
+// 컴포넌트는 첫글자가 대문자
+const PrivateRoute =()=>{
+// 보호할 페이지는 UserPage.js
+// 상황 가정 : authenticate는 로그인 여부
+return authenticate == true ? <UserPage/> : <Navigate to="/login"/>
+}
 ```
