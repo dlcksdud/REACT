@@ -17,12 +17,12 @@
 	```shell script
 	npm i json-server@0.17.4
 	```  
-2-1. Product Card 만들기
-	- 필요한 것 : img, choice, 제목, 가격, 신제품
-	- 카드들은 중앙배열
-	- 한 줄에 카드를 4개씩 보여줌
-	- 반응형 ui로 화면사이즈가 작아지면 하나씩 보이게 됨
-	- react bootstrap 이용
+2-1. Product Card 만들기  
+	- 필요한 것 : img, choice, 제목, 가격, 신제품  
+	- 카드들은 중앙배열  
+	- 한 줄에 카드를 4개씩 보여줌  
+	- 반응형 ui로 화면사이즈가 작아지면 하나씩 보이게 됨  
+	- react bootstrap 이용  
 
 3. 로그인 버튼을 누르면 로그인 페이지가 나온다.  
 3-1. 로그인 페이지 만들기
