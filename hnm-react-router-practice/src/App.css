@@ -1,0 +1,48 @@
+.login-button {
+    display: flex;
+    justify-content: flex-end;
+    margin: 20px;
+}
+.login-out-text {
+    margin-left: 5px;
+}
+
+/*로고 위치 맟추기*/
+svg.svg-inline--fa.fa-right-to-bracket {
+    padding-top: 3px;
+}
+svg.svg-inline--fa.fa-right-from-bracket {
+    padding-top: 3px;
+}
+
+.nav-section {
+    display: flex;
+    justify-content: center;
+}
+.menu-list {
+    display: flex;
+    list-style-type: none;
+}
+.menu-list li {
+    padding: 10px;
+}
+.menu-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.search-input input {
+    border: none;
+    margin-left: 10px;
+}
+.search-input {
+    border-bottom: 2px solid #000;
+    height: 30px;
+    position: absolute;
+    right: 0;
+    margin-right: 30px;
+}
+*:focus-visible {
+    outline: none;
+}
+

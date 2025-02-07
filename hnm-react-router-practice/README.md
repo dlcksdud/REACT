@@ -1,14 +1,14 @@
 # React Router 이용해서 쇼핑몰 웹사이트 만들기
 
 ## Step
-1. 전체 상품 페이지, 로그인 페이지, 상품 상세 페이지 => 총 3개 페이지
-1-1. navigation bar(Navbar) 만들기
+1. 전체 상품 페이지, 로그인 페이지, 상품 상세 페이지 => 총 3개 페이지  
+1-1. navigation bar(Navbar) 만들기  
 ![Navbar 구성도](./navigation_bar.png)
-- <div/> 3개
-- 1번 <div/>에는 아이콘, 로그인/아웃 버튼
-- 2번 <div/>에는 HNM 로고
-- 3번 <div/>에는 카테고리, 검색창
-- [icon 구하는 웹사이트](https://fontawesome.com/)
+	- `<div/>` 3개
+	- 1번 `<div/>`에는 아이콘, 로그인/아웃 버튼
+	- 2번 `<div/>`에는 HNM 로고
+	- 3번 `<div/>`에는 카테고리, 검색창
+	- [icon 구하는 웹사이트 : fontawesome/react](https://docs.fontawesome.com/v5/web/use-with/react)
 2. 전체 상품 페이지에서는 전체 상품을 볼 수 있다.
 3. 로그인 버튼을 누르면 로그인 페이지가 나온다.
 4. 상품 디테일을 눌렀으나, 로그인이 안되었으면 로그인 페이지가 먼저 나온다.
