@@ -9,6 +9,7 @@
 	- 2번 `<div/>`에는 HNM 로고
 	- 3번 `<div/>`에는 카테고리, 검색창
 	- [icon 구하는 웹사이트 : fontawesome/react](https://docs.fontawesome.com/v5/web/use-with/react)
+
 2. 전체 상품 페이지에서는 전체 상품을 볼 수 있다.
 	- 작은 Json server 만들기
 	- [Json-server npm 사이트](https://www.npmjs.com/package/json-server)
@@ -22,6 +23,7 @@
 	- 한 줄에 카드를 4개씩 보여줌
 	- 반응형 ui로 화면사이즈가 작아지면 하나씩 보이게 됨
 	- react bootstrap 이용
+
 3. 로그인 버튼을 누르면 로그인 페이지가 나온다.  
 3-1. 로그인 페이지 만들기
 	- react-bootstrap 이용
@@ -29,6 +31,7 @@
 	- `<Form><Button type=submit/></Form>`
 	- Form 내부의 Button type이 submit일 때 버튼을 클릭하면 새로고침이 된다.
 	- 새로고침을 방지하기 위해서 onSubmit 시 `event.preventDefault()` 사용  
+
 4. 상품 디테일을 눌렀으나, 로그인이 안되었으면 로그인 페이지가 먼저 나온다.  
 5. 로그인이 되어있으면 상품 디테일 페이지를 볼 수 있다.  
 6. 로그아웃 버튼을 클릭하면 로그아웃이 된다.  
