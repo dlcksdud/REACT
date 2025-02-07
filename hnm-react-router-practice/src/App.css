@@ -9,10 +9,10 @@
 
 /*로고 위치 맟추기*/
 svg.svg-inline--fa.fa-right-to-bracket {
-    padding-top: 3px;
+    padding-top: 5px;
 }
 svg.svg-inline--fa.fa-right-from-bracket {
-    padding-top: 3px;
+    padding-top: 5px;
 }
 
 .nav-section {
@@ -46,4 +46,15 @@ svg.svg-inline--fa.fa-right-from-bracket {
 *:focus-visible {
     outline: none;
 }
-
+.product-card img {
+    width: -webkit-fill-available;
+}
+.product-card {
+    transition: all 0.3s ease;
+}
+.font-sizing {
+    font-size: 10px;
+}
+.product-card:hover {
+    transform: scale(1.15);
+}
