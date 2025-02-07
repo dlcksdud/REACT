@@ -12,6 +12,10 @@
 2. 전체 상품 페이지에서는 전체 상품을 볼 수 있다.
 	- 작은 Json server 만들기
 	- [Json-server npm](https://www.npmjs.com/package/json-server)
+	- Jsonserver가 1버전으로 업데이트가 되었는데 최신버전이 불안정하다는 이슈가 있어서 0버전대 사용함
+	```shell script
+	npm i json-server@0.17.4
+	```
 3. 로그인 버튼을 누르면 로그인 페이지가 나온다.
 4. 상품 디테일을 눌렀으나, 로그인이 안되었으면 로그인 페이지가 먼저 나온다.
 5. 로그인이 되어있으면 상품 디테일 페이지를 볼 수 있다.
