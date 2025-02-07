@@ -3,6 +3,7 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faRightToBracket, faRightFromBracket, faSearch } from '@fortawesome/free-solid-svg-icons'
 import cylogoImg from "../Image/CYlogo.png";
+import { useNavigate } from 'react-router-dom';
 
 /**
  * [Navbar 구성]
@@ -12,20 +13,27 @@ import cylogoImg from "../Image/CYlogo.png";
  * 3번 <div/>에는 카테고리, 검색창
  */
 const Navbar = () => {
+    const navigate = useNavigate();
     const memuList = ['여성', 'Divided', '남성', "유아", "아동", "CY Home", "Sale", "지속가능성"];
 
+    const goToLoinPage =() => {
+        navigate('/login')
+    }
+    const goToProductAllPage = () => {
+        navigate('/')
+    }
   return (
     <div>
         <div>
             <div className='login-button'>
                 <FontAwesomeIcon icon={faRightToBracket} />
-                <div className='login-out-text'>로그인</div>
+                <div className='login-out-text' onClick={goToLoinPage}>로그인</div>
                 <FontAwesomeIcon icon={faRightFromBracket} />
                 <div className='login-out-text'>로그아웃</div>
             </div>
         </div>
         <div className='nav-section'>
-            <img width={150} src={cylogoImg}></img>
+            <img onClick={goToProductAllPage} width={150} src={cylogoImg}></img>
         </div>
         <div className='menu-area'>
             <ul className='menu-list'>

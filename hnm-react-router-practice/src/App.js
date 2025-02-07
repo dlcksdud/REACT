@@ -5,8 +5,11 @@ import LoginPage from './Page/LoginPage';
 import ProductDetailPage from './Page/ProductDetailPage';
 import Navbar from './component/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useState } from 'react';
 
 function App() {
+  const [authenticate, setAuthenticate] = useState(false);
+  
   return (
     <div>
       <Navbar /> {/**navigation bar 만들기 : route 화면은 바뀌어도 navbar는 유지 */}
