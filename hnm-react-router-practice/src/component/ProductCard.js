@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 /**
  * Product card에 필요한 것
@@ -12,9 +13,13 @@ import React from 'react'
  * 2. choice 정리
  */
 const ProductCard = ({item}) => {
+  const navigate = useNavigate();
+  const showDetail = () => {
+    navigate(`/product/${item.id}`);
+  }
 
   return (
-    <div className='product-card'>
+    <div className='product-card' onClick={showDetail}>
       <img src={item?.img}></img>
       <div className='font-sizing'>{item?.choice == true ? "MD Choice" : ""}</div>
       <div>{item?.title}</div>

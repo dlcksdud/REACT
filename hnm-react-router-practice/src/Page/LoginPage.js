@@ -1,12 +1,15 @@
 import React from 'react'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { useNavigate } from 'react-router-dom';
 
-const LoginPage = () => {
-
+const LoginPage = ({setAuthenticate}) => {
+  const navigate = useNavigate();
   const loginUser = (event) => {
     event.preventDefault(); // 새로고침 기능 없앰
-    console.log("love");
+    console.log("Login user function issue");
+    setAuthenticate(true);
+    navigate("/");
   }
 
   return (

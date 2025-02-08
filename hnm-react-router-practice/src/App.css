@@ -8,6 +8,18 @@ svg.svg-inline--fa.fa-right-from-bracket {
 /*로그인/아웃 로고 위치 맟추기 끝*/
 
 /*nav bar*/
+.login-button {
+    display: flex;
+    justify-content: flex-end;
+    margin: 20px;
+}
+.login-out-text {
+    margin-left: 5px;
+}
+.login-out-text:hover {
+    cursor: pointer;
+}
+
 .nav-section img {
     cursor: pointer;
 }
@@ -62,7 +74,7 @@ svg.svg-inline--fa.fa-right-from-bracket {
     font-size: 10px;
 }
 .product-card:hover {
-    transform: scale(1.15);
+    transform: scale(1.05);
     cursor: pointer;
 }
 /*product card 끝*/
@@ -100,17 +112,27 @@ button.btn.btn-primary:active {
     border-color: deeppink;
     box-shadow: 0 0 0 .25rem rgb(233 30 99 / 11%);
 }
-.login-button {
-    display: flex;
-    justify-content: flex-end;
-    margin: 20px;
-}
-.login-out-text {
-    margin-left: 5px;
-}
-.login-out-text:hover {
-    cursor: pointer;
-}
+
 /*로그인 페이지 끝*/
+
+/*상품 디테일 페이지 */
+.product-img {
+    display: flex;
+    justify-content: flex-end;   
+}
+#dropdown-basic {
+    border: 1px solid black;
+}
+.container {
+    margin-top: 60px;
+}
+.col div {
+    margin-top: 15px;
+}
+button.btn.btn-dark {
+    margin-top: 15px;
+    border-radius: 0;
+    width: 100%;
+}
 
 
