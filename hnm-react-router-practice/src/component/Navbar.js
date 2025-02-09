@@ -3,7 +3,8 @@ import React, {useEffect, useState} from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faRightToBracket, faRightFromBracket, faSearch } from '@fortawesome/free-solid-svg-icons'
 import cylogoImg from "../Image/CYlogo.png";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import axios from 'axios';
 
 /**
  * [Navbar 구성]
@@ -14,7 +15,7 @@ import { useNavigate } from 'react-router-dom';
  * 
  * 숙제 : 제품검색 기능
  */
-const Navbar = ({setSearchWord}) => {
+const Navbar = ({authenticate, setAuthenticate}) => {
     const navigate = useNavigate();
     const memuList = ['여성', 'Divided', '남성', "유아", "아동", "CY Home", "Sale", "지속가능성"];
 
@@ -25,22 +26,37 @@ const Navbar = ({setSearchWord}) => {
         navigate('/')
     }
 
-
-    const handleKeyDown = (e) => {
-        if(e.key === "Enter") {
-            e.preventDefault();
-            setSearchWord(e.target.value);
+    /**
+     * 선생님 코드
+     */
+    const search = (e) => {
+        if(e.key === 'Enter') {
+            console.log("We click this key : ", e.key); // Enter
+            // 입력한 검색어를 읽어와서 url을 바꿔준다.
+            navigate(`/?q=${e.target.value}`)
         }
+    }
+
+    const logout = () => {
+        setAuthenticate(false);
     }
     
   return (
     <div>
         <div>
             <div className='login-button'>
-                <FontAwesomeIcon icon={faRightToBracket} />
-                <div className='login-out-text' onClick={goToLoinPage}>로그인</div>
-                <FontAwesomeIcon icon={faRightFromBracket} />
-                <div className='login-out-text'>로그아웃</div>
+                {authenticate ? (
+                    <>
+                        <FontAwesomeIcon icon={faRightFromBracket} />
+                        <div className='login-out-text' onClick={logout}>로그아웃</div>
+                    </>
+                ) : (
+                    <>
+                        <FontAwesomeIcon icon={faRightToBracket} />
+                        <div className='login-out-text' onClick={goToLoinPage}>로그인</div>
+                    </>
+                    
+                )}
             </div>
         </div>
         <div className='nav-section'>
@@ -57,7 +73,7 @@ const Navbar = ({setSearchWord}) => {
                 <input 
                     type='text' 
                     placeholder='제품검색'
-                    onKeyDown={handleKeyDown}                      
+                    onKeyDown={(e) => search(e)}                      
                 >
                 </input>
             </div>

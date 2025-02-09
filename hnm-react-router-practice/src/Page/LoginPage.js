@@ -11,6 +11,7 @@ const LoginPage = ({setAuthenticate}) => {
     setAuthenticate(true);
     navigate("/");
   }
+  
 
   return (
     // 선생님은 <Container/> 사용
