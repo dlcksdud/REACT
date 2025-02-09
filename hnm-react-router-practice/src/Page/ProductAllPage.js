@@ -11,7 +11,8 @@ const ProductAllPage = () => {
 
   const getProducts =()=> {
     let searchQuery = query.get('q') || "";
-    let url = `http://localhost:5000/products?q=${searchQuery}`;
+    // let url = `http://localhost:5000/products?q=${searchQuery}`;
+    let url = `https://my-json-server.typicode.com/dlcksdud/REACT/products?q=${searchQuery}`;
     axios.get(url)
         .then((res)=> {
             console.log(res.data);

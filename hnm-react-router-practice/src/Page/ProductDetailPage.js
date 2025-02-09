@@ -12,7 +12,8 @@ const ProductDetailPage = () => {
   const [product, setProduct] = useState(null);
   const [size, setSize] = useState("사이즈 선택");
   const getProductDetail = () => {
-    let url = `http://localhost:5000/products/${id}`;
+    // let url = `http://localhost:5000/products/${id}`;
+    let url = `https://my-json-server.typicode.com/dlcksdud/REACT/products/${id}`;
     axios.get(url)
         .then((res) =>{
           console.log(res.data);

@@ -41,3 +41,4 @@
 
 번외) 배포하기
 - [My Json server 구축 링크](https://my-json-server.typicode.com/)
+- Netlify에서 배포 [Netlify 링크](https://www.netlify.com/)
