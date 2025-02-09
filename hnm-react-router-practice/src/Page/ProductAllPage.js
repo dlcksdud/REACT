@@ -5,14 +5,17 @@ import ProductCard from '../component/ProductCard';
 import { Container, Row, Col } from 'react-bootstrap';
 
 
-const ProductAllPage = () => {
+const ProductAllPage = ({searchWord}) => {
   const [productList, setProductList] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
+
   const getProducts =()=> {
     let url = `http://localhost:5000/products`;
     axios.get(url)
         .then((res)=> {
             console.log(res.data);
             setProductList(res.data);
+            setFilteredProducts(res.data);
         })
         .catch((err)=>{
             console.log(err);
@@ -21,15 +24,30 @@ const ProductAllPage = () => {
 
   useEffect(() => {
     getProducts();
-  }, [])
+  }, []);
+
+  useEffect(() => {
+    const trimmedSearchWord = searchWord.trim();
+    if (trimmedSearchWord) {
+      const filtered = productList.filter((menu) =>
+        menu.title.toLowerCase().includes(trimmedSearchWord.toLowerCase())
+      );
+      setFilteredProducts(filtered);
+    } else {
+      setFilteredProducts(productList);
+    }
+  }, [searchWord]);
+
 
   return (
     <div>
       <Container>
         <Row>
-          {productList.map((menu) => (
-            <Col lg={3}><ProductCard item={menu}/></Col>
-          ))}
+        {filteredProducts.map((menu) => (
+          <Col lg={3} key={menu.id}>
+            <ProductCard item={menu} />
+          </Col>
+        ))}
         </Row>
       </Container>
     </div>

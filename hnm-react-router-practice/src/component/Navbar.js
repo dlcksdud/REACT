@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 // fontawesome icon 사용하기
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faRightToBracket, faRightFromBracket, faSearch } from '@fortawesome/free-solid-svg-icons'
@@ -11,8 +11,10 @@ import { useNavigate } from 'react-router-dom';
  * 1번 <div/>에는 아이콘, 로그인/아웃 버튼
  * 2번 <div/>에는 HNM 로고
  * 3번 <div/>에는 카테고리, 검색창
+ * 
+ * 숙제 : 제품검색 기능
  */
-const Navbar = () => {
+const Navbar = ({setSearchWord}) => {
     const navigate = useNavigate();
     const memuList = ['여성', 'Divided', '남성', "유아", "아동", "CY Home", "Sale", "지속가능성"];
 
@@ -22,6 +24,15 @@ const Navbar = () => {
     const goToProductAllPage = () => {
         navigate('/')
     }
+
+
+    const handleKeyDown = (e) => {
+        if(e.key === "Enter") {
+            e.preventDefault();
+            setSearchWord(e.target.value);
+        }
+    }
+    
   return (
     <div>
         <div>
@@ -43,7 +54,12 @@ const Navbar = () => {
             </ul>
             <div className='search-input'>
                 <FontAwesomeIcon icon={faSearch} />
-                <input type='text' placeholder='제품검색'></input>
+                <input 
+                    type='text' 
+                    placeholder='제품검색'
+                    onKeyDown={handleKeyDown}                      
+                >
+                </input>
             </div>
         </div>
     </div>
