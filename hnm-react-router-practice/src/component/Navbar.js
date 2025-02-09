@@ -5,6 +5,7 @@ import { faRightToBracket, faRightFromBracket, faSearch } from '@fortawesome/fre
 import cylogoImg from "../Image/CYlogo.png";
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import axios from 'axios';
+import { FaBars, FaTimes } from "react-icons/fa";
 
 /**
  * [Navbar 구성]
@@ -18,6 +19,7 @@ import axios from 'axios';
 const Navbar = ({authenticate, setAuthenticate}) => {
     const navigate = useNavigate();
     const memuList = ['여성', 'Divided', '남성', "유아", "아동", "CY Home", "Sale", "지속가능성"];
+    const [isOpen, setIsOpen] = useState(false);
 
     const goToLoinPage =() => {
         navigate('/login')
@@ -62,6 +64,7 @@ const Navbar = ({authenticate, setAuthenticate}) => {
         <div className='nav-section'>
             <img onClick={goToProductAllPage} width={150} src={cylogoImg}></img>
         </div>
+
         <div className='menu-area'>
             <ul className='menu-list'>
                 {memuList.map(menu => (

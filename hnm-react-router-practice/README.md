@@ -38,3 +38,10 @@
 7. 로그아웃이 되면 상품 디테일 페이지를 볼 수 없다. 다시 로그인 페이지가 나온다.  
 8. 로그인을 하면 로그아웃이 보이고 로그아웃을 하면 로그인이 보임  
 9. 상품을 검색할 수 있다.  
+
+번외) 모바일 화면에서는 navbar를 사이드바로 변경  
+- Tailwind 를 사용하였다.
+```shell script
+npm install -D tailwindcss
+npx tailwindcss init
+```
