@@ -39,9 +39,5 @@
 8. 로그인을 하면 로그아웃이 보이고 로그아웃을 하면 로그인이 보임  
 9. 상품을 검색할 수 있다.  
 
-번외) 모바일 화면에서는 navbar를 사이드바로 변경  
-- Tailwind 를 사용하였다.
-```shell script
-npm install -D tailwindcss
-npx tailwindcss init
-```
+번외) 배포하기
+- [My Json server 구축 링크](https://my-json-server.typicode.com/)
