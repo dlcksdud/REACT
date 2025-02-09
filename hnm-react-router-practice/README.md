@@ -42,3 +42,5 @@
 번외) 배포하기
 - [My Json server 구축 링크](https://my-json-server.typicode.com/)
 - Netlify에서 배포 [Netlify 링크](https://www.netlify.com/)
+	- netlify 배포 시 빌드 option Build command : CI=false npm run build 로 수정 후 배포
+- [CY shopping app](https://lighthearted-cajeta-5196f6.netlify.app/)
