@@ -23,3 +23,9 @@ ex) 로그인
 ```shell script
 npm install redux
 ```
+
+- react-redux : redux와 별개로 redux가 react에서 잘 쓰이기 위해 필요한 함수들을 모아놓은 package
+```shell script
+
+```
+     
