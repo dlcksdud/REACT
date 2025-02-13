@@ -50,7 +50,7 @@ root.render(
 - createstore : 현재 deprecated 되어있음, configurestore 쓰는 걸 추천하고 있다.
     - configurestore의 동작원리를 정확히 이해하기 위해서 먼저 알기를 추천.
 
-- useDispatch
+### useDispatch
 ```javascript
 import { useDispatch } from 'react-redux';
 // 생략
@@ -61,8 +61,8 @@ import { useDispatch } from 'react-redux';
 ```javascript
 const dispatch = useDispatch();
 // type: action의 이름
-// payload : 옵션
-dispatch({type: "INCREMENT", payload:})
+// payload : 함수의 매개변수 같은 느낌, 필요한 정보를 보내줄 수 있음
+dispatch({type: "INCREMENT", payload:{num: 5}})
 ```  
 - reducer는 자동으로 dispatch가 던진 action을 받아올 수 있음
 - reducer 기본 구조  
@@ -75,6 +75,7 @@ function reducer(state=initialState, action) {
     console.log("Action은 뭘까?", action);
     //{type: '@@redux/INITf.1.9.1.f.9'}type: "@@redux/INITf.1.9.1.f.9"[[Prototype]]: Object
 
+    // if문, switch문 등 회사에 따라 사용방법은 다름.
     if(action.type === "INCREMENT") {
         return {
             // store는 reducer의 return값을 적용한다.
@@ -88,4 +89,14 @@ function reducer(state=initialState, action) {
 }
 
 export default reducer;
+```  
+
+### useSelector
+- state값 가져와서 쓰고 싶으면 useSelector  
+```javascript
+import { useSelector } from 'react-redux';
+// 생략
+ const level = useSelector(state => state.level);
+// 생략
+<h1>{level}</h1>
 ```
