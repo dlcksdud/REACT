@@ -10,6 +10,7 @@
 
 - redux를 어려워 하는 이유? 컴포넌트가 store의 값을 바로 바꾸거나 요청하지 못한다.
 ![redux의 cycle](./redux_cycle.png)  
+
 ex) 로그인
 - action : 로그인 하기
 - reducer : 작업지시 리스트 중에서 골라서 작업 -> store의 값을 바꿔줌
@@ -64,3 +65,27 @@ const dispatch = useDispatch();
 dispatch({type: "INCREMENT", payload:})
 ```  
 - reducer는 자동으로 dispatch가 던진 action을 받아올 수 있음
+- reducer 기본 구조  
+```javascript
+let initialState = {
+    level:0
+}
+
+function reducer(state=initialState, action) {
+    console.log("Action은 뭘까?", action);
+    //{type: '@@redux/INITf.1.9.1.f.9'}type: "@@redux/INITf.1.9.1.f.9"[[Prototype]]: Object
+
+    if(action.type === "INCREMENT") {
+        return {
+            // store는 reducer의 return값을 적용한다.
+            // ...state인 이유 : (만약 state가 여러개이면) 다른 state값은 유지하되, count만 바꾼다는 의미
+            // ...spread문법을 통해서 기존 객체 내용을 복사해 새로운 객체에 전달 가능
+            ...state, level: state.level + 1
+        };
+    }
+    // store는 return값 필수
+    return {...state};
+}
+
+export default reducer;
+```
