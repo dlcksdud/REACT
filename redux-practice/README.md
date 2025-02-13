@@ -9,7 +9,7 @@
 - redux는 store라는 저장소에 state를 저장해 준다. 
 
 - redux를 어려워 하는 이유? 컴포넌트가 store의 값을 바로 바꾸거나 요청하지 못한다.
-![redux의 cycle](./redux_cycle.png)
+![redux의 cycle](./redux_cycle.png)  
 ex) 로그인
 - action : 로그인 하기
 - reducer : 작업지시 리스트 중에서 골라서 작업 -> store의 값을 바꿔줌
@@ -24,8 +24,43 @@ ex) 로그인
 npm install redux
 ```
 
-- react-redux : redux와 별개로 redux가 react에서 잘 쓰이기 위해 필요한 함수들을 모아놓은 package
+# React-Redux
+- [React-Reduc 링크](https://react-redux.js.org/)
+- redux와 별개로 redux가 react에서 잘 쓰이기 위해 필요한 함수들을 모아놓은 package
 ```shell script
 npm install react-redux
 ```
-     
+
+- `<Provider />` : the Redux store available to the rest of your app, index.js에 적용
+```javascript
+// 생략
+import { Provider } from 'react-redux'
+import store from './store'
+// 생략
+
+// As of React 18
+const root = ReactDOM.createRoot(document.getElementById('root'))
+root.render(
+  <Provider store={store}>
+    <App />
+  </Provider>
+)
+```  
+- createstore : 현재 deprecated 되어있음, configurestore 쓰는 걸 추천하고 있다.
+    - configurestore의 동작원리를 정확히 이해하기 위해서 먼저 알기를 추천.
+
+- useDispatch
+```javascript
+import { useDispatch } from 'react-redux';
+// 생략
+ const dispatch = useDispatch();
+```  
+- Action은 단순한 Object(객체)이다.
+- dispatch에 Action을 넘겨야 하는데 방법은
+```javascript
+const dispatch = useDispatch();
+// type: action의 이름
+// payload : 옵션
+dispatch({type: "INCREMENT", payload:})
+```  
+- reducer는 자동으로 dispatch가 던진 action을 받아올 수 있음
