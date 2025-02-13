@@ -32,7 +32,7 @@ function reducer(state=initialState, action) {
                 pw:action.payload.pw
                 };
         case "DECREMENT":
-            return {...state, level: state.level - 1};
+            return {...state, level: state.level - action.payload.num};
         default:
             // store는 return값 필수
             return {...state};

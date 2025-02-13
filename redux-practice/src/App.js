@@ -22,9 +22,9 @@ function App() {
 
   const levelDown = () => {
     dispatch({
-      type: "DECREMENT"
+      type: "DECREMENT",
+      payload:{num: 2} // payload에서 넘긴 숫자만큼 감소
     })
-    console.log(level);
   }
 
   const login =() => {
