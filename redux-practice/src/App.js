@@ -20,6 +20,13 @@ function App() {
     // setLevel(level + 1);
   }
 
+  const levelDown = () => {
+    dispatch({
+      type: "DECREMENT"
+    })
+    console.log(level);
+  }
+
   const login =() => {
     dispatch({
       type: "LOGIN", 
@@ -32,6 +39,7 @@ function App() {
       <h1>아이디 : {id} , 비밀번호: {pw}</h1>
       <button onClick={levelUp}>level up!</button>
       <button onClick={login}>로그인</button>
+      <button onClick={levelDown}>감소시키기(숙제)</button>
       <Box />
     </div>
   );
