@@ -1,0 +1,16 @@
+.title {
+    text-align: center;
+    margin-top: 20px;
+}
+#inputPassword5 {
+    margin-right: 20px;
+}
+.container {
+    margin-top : 70px;
+}
+.contactList-div {
+    margin-top : 50px;
+}
+.contact-item-col {
+    border: 1px solid gray;
+}
