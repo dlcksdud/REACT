@@ -1,25 +1,26 @@
-import React, {useRef} from 'react'
+import React, {useState} from 'react'
 import {Row, Col, Form, Button} from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 
 const SearchForm = () => {
-    const searchInputRef = useRef();
+    
     const dispatch = useDispatch();
+    const [search, setSearch] = useState('');
 
-    const seacrh = () => {
-        console.log("검색어 : ", searchInputRef.current.value);
+    const goSeacrh = () => {
+        console.log(search);
         dispatch({
             type: "SEARCHITEM",
-            payload: searchInputRef.current.value
+            payload: search
         })
     }
   return (
     <Row>
         <Col lg={10}>
-            <Form.Control type="text" placeholder="검색어를 입력하세요." ref={searchInputRef} />
+            <Form.Control type="text" placeholder="검색어를 입력하세요." onChange={(e) => {setSearch(e.target.value)}} />
         </Col>
         <Col lg={2}>
-            <Button onClick={() => seacrh()}>검색</Button>
+            <Button onClick={() => goSeacrh()}>검색</Button>
         </Col>
     </Row>
   )

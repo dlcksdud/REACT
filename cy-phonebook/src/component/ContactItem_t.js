@@ -1,9 +1,8 @@
 import React from 'react'
 import { Row, Col } from 'react-bootstrap'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 
 const ContactItem = ({item}) => {
-  console.log(item);
     
   return (
     <Row>
