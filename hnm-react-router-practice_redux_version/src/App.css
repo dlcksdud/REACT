@@ -1,0 +1,138 @@
+/*로그인/아웃 로고 위치 맟추기*/
+svg.svg-inline--fa.fa-right-to-bracket {
+    padding-top: 5px;
+}
+svg.svg-inline--fa.fa-right-from-bracket {
+    padding-top: 5px;
+}
+/*로그인/아웃 로고 위치 맟추기 끝*/
+
+/*nav bar*/
+.login-button {
+    display: flex;
+    justify-content: flex-end;
+    margin: 20px;
+}
+.login-out-text {
+    margin-left: 5px;
+}
+.login-out-text:hover {
+    cursor: pointer;
+}
+
+.nav-section img {
+    cursor: pointer;
+}
+.nav-section {
+    display: flex;
+    justify-content: center;
+}
+.menu-list {
+    display: flex;
+    list-style-type: none;
+}
+.menu-list li {
+    padding: 10px;
+}
+.menu-list li:hover {
+    padding: 10px;
+    cursor: pointer;
+}
+.menu-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/*nav bar 끝*/
+
+/*검색창*/
+.search-input input {
+    border: none;
+    margin-left: 10px;
+    font-size: 16px;
+}
+.search-input {
+    border-bottom: 2px solid #000;
+    height: 30px;
+    position: absolute;
+    right: 0;
+    margin-right: 30px;
+}
+*:focus-visible {
+    outline: none;
+}
+/*검색창 끝*/
+
+/*product card*/
+.product-card img {
+    width: -webkit-fill-available;
+}
+.product-card {
+    transition: all 0.3s ease;
+}
+.font-sizing {
+    font-size: 10px;
+}
+.product-card:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+/*product card 끝*/
+
+/*로그인 페이지*/
+.login-form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.login-form-div {
+    border: 2px solid deeppink;
+    padding: 38px;
+    margin-top: 50px;
+    width: 40%;
+    border-radius: 10px;
+}
+button.btn.btn-primary {
+    background-color: deeppink;
+    border-color: deeppink;
+}
+button.btn.btn-primary:active {
+    background-color: #f7c1de;
+    border-color: #f7c1de;
+}
+.form-label {
+    color: deeppink;
+}
+#formBasicEmail:focus {
+    border-color: deeppink;
+    box-shadow: 0 0 0 .25rem rgb(233 30 99 / 11%);
+}
+#formBasicPassword:focus {
+    border-color: deeppink;
+    box-shadow: 0 0 0 .25rem rgb(233 30 99 / 11%);
+}
+
+/*로그인 페이지 끝*/
+
+/*상품 디테일 페이지 */
+.product-img {
+    display: flex;
+    justify-content: flex-end;   
+}
+#dropdown-basic {
+    border: 1px solid black;
+}
+.container {
+    margin-top: 60px;
+}
+.col div {
+    margin-top: 15px;
+}
+button.btn.btn-dark {
+    margin-top: 15px;
+    border-radius: 0;
+    width: 100%;
+}
+
+
