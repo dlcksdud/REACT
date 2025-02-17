@@ -5,22 +5,21 @@ import ProductCard from '../component/ProductCard';
 import { Container, Row, Col } from 'react-bootstrap';
 import { useSearchParams } from 'react-router-dom';
 
+// productAction에서 객체로 반환했기 때문에 {객체명} 으로 들고와야 한다.
+import {productAction} from '../redux/actions/productAction';
+import { useDispatch } from 'react-redux';
+
 const ProductAllPage = () => {
   const [productList, setProductList] = useState([]);
   const [query, setQuery] = useSearchParams();
 
-  const getProducts =()=> {
+  const dispatch = useDispatch();
+
+  const getProducts = () => {
     let searchQuery = query.get('q') || "";
-    // let url = `http://localhost:5000/products?q=${searchQuery}`;
-    let url = `https://my-json-server.typicode.com/dlcksdud/REACT/products?q=${searchQuery}`;
-    axios.get(url)
-        .then((res)=> {
-            console.log(res.data);
-            setProductList(res.data);
-        })
-        .catch((err)=>{
-            console.log(err);
-        })
+
+    // 바로 store로 안가고 productAction의 getProducts 함수를 거쳐서 가도록
+    dispatch(productAction.getProducts(searchQuery));
   }
 
   useEffect(() => {
