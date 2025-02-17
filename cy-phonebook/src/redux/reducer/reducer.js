@@ -1,22 +1,31 @@
 let initialState = {
     name: "",
     phoneNumber: "",
-    searchItem: ""
+    searchItem: "",
+    contactList: [] // 선생님꺼
 }
 
 function reducer(state = initialState, action) {
-    switch (action.type) {
+    // 아래와 같이 Destructuring 하면 action. 안적어도 됨
+    const {type, payload} = action
+    
+    switch (type) {
         case "SAVEITEM":
             return {
                 ...state,
-                name: action.payload.name,
-                phoneNumber: action.payload.phoneNumber
+                name: payload.name,
+                phoneNumber: payload.phoneNumber
             };
         case "SEARCHITEM":
             return {
                 ...state,
-                searchItem: action.payload
+                searchItem: payload
             };
+        case "ADD_CONTACT": // 선생님꺼
+            return {
+                ...state,
+                contactList: [...state.contactList, {name: payload.name, phoneNumber: payload.phoneNumber}]
+            }   
         default:
             return {...state};
     }
