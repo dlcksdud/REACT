@@ -26,18 +26,6 @@ const ProductAllPage = () => {
     getProducts();
   }, [query]);
 
-  // useEffect(() => {
-  //   const trimmedSearchWord = searchWord.trim();
-  //   if (trimmedSearchWord) {
-  //     const filtered = productList.filter((menu) =>
-  //       menu.title.toLowerCase().includes(trimmedSearchWord.toLowerCase())
-  //     );
-  //     setFilteredProducts(filtered);
-  //   } else {
-  //     setFilteredProducts(productList);
-  //   }
-  // }, [searchWord]);
-
 
   return (
     <div>

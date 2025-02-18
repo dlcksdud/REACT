@@ -6,27 +6,18 @@ import Navbar from './component/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect, useState } from 'react';
 import PrivateRoute from './routes/PrivateRoute';
+import { useSelector } from 'react-redux';
 
 function App() {
-  const [authenticate, setAuthenticate] = useState(false);
-
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    console.log(authenticate);
-  }, [authenticate]) // authenticate값이 바뀔 때 마다.
-
-  // useEffect(() => {
-  //   navigate("/");
-  // }, []);
+  
 
   return (
     <div>
-      <Navbar authenticate={authenticate} setAuthenticate={setAuthenticate}/> {/**navigation bar 만들기 : route 화면은 바뀌어도 navbar는 유지 */}
+      <Navbar /> {/**navigation bar 만들기 : route 화면은 바뀌어도 navbar는 유지 */}
       <Routes>
         <Route path="/" element={<ProductAllPage/>}></Route>
-        <Route path="/login" element={<LoginPage setAuthenticate={setAuthenticate}/>}></Route>
-        <Route path="/product/:id" element={<PrivateRoute authenticate={authenticate}/>}></Route>
+        <Route path="/login" element={<LoginPage/>}></Route>
+        <Route path="/product/:id" element={<PrivateRoute/>}></Route>
       </Routes>
     </div>
   );

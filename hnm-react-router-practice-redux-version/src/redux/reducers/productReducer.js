@@ -10,7 +10,7 @@ function productReducer(state = initialState, action) {
                 ...state,
                 productList: payload.data
             };
-        default :
+        default:
             return {...state};
     }
 }

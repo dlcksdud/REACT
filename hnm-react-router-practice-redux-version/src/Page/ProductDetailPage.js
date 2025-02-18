@@ -2,27 +2,27 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import { Container, Row, Col, Dropdown, Button } from 'react-bootstrap'
+import { useDispatch, useSelector } from 'react-redux'
+import { productDetailAction } from '../redux/actions/productDetailAction'
 
 const ProductDetailPage = () => {
   useEffect(()=>{
     getProductDetail();
   }, [])
 
+  const dispatch = useDispatch();
+
   let {id} = useParams();
-  const [product, setProduct] = useState(null);
+
+  const product = useSelector(state => state.productDetail.product);
+
   const [size, setSize] = useState("사이즈 선택");
+
   const getProductDetail = () => {
-    // let url = `http://localhost:5000/products/${id}`;
-    let url = `https://my-json-server.typicode.com/dlcksdud/REACT/products/${id}`;
-    axios.get(url)
-        .then((res) =>{
-          console.log(res.data);
-          setProduct(res.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        })
+    console.log("get productDetail fx");
+    dispatch(productDetailAction.getProductDetail(id));
   }
+
   return (
     <Container>
       <Row>

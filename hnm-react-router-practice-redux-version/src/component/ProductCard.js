@@ -17,6 +17,7 @@ const ProductCard = ({item}) => {
   const showDetail = () => {
     navigate(`/product/${item.id}`);
   }
+  
 
   return (
     <div className='product-card' onClick={showDetail}>

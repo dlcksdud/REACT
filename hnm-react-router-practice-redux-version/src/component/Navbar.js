@@ -6,6 +6,7 @@ import cylogoImg from "../Image/CYlogo.png";
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import axios from 'axios';
 import { FaBars, FaTimes } from "react-icons/fa";
+import { useSelector, useDispatch } from 'react-redux';
 
 /**
  * [Navbar 구성]
@@ -16,10 +17,11 @@ import { FaBars, FaTimes } from "react-icons/fa";
  * 
  * 숙제 : 제품검색 기능
  */
-const Navbar = ({authenticate, setAuthenticate}) => {
+const Navbar = () => {
     const navigate = useNavigate();
     const memuList = ['여성', 'Divided', '남성', "유아", "아동", "CY Home", "Sale", "지속가능성"];
     const [isOpen, setIsOpen] = useState(false);
+    const dispatch = useDispatch();
 
     const goToLoinPage =() => {
         navigate('/login')
@@ -27,6 +29,9 @@ const Navbar = ({authenticate, setAuthenticate}) => {
     const goToProductAllPage = () => {
         navigate('/')
     }
+
+    const authenticate = useSelector(state => state.auth.authenticate);
+    console.log("authenticate : " + authenticate);
 
     /**
      * 선생님 코드
@@ -40,7 +45,7 @@ const Navbar = ({authenticate, setAuthenticate}) => {
     }
 
     const logout = () => {
-        setAuthenticate(false);
+       dispatch({type: "LOGOUT_SUCCESS"})
     }
     
   return (

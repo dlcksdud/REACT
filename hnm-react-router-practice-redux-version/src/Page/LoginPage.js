@@ -2,16 +2,17 @@ import React, { useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { authenticateAction } from '../redux/actions/authenticateAction';
 
-const LoginPage = ({setAuthenticate}) => {
+const LoginPage = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [id, setId] = useState('');
   const [pw, setPw] = useState('');
+
 
   const loginUser = (event) => {
     event.preventDefault(); // 새로고침 기능 없앰
