@@ -2,6 +2,7 @@ import './App.css';
 import {useEffect, useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Box from './component/Box';
+import { basicActions } from './redux/reducer/reducer';
 
 function App() {
   // const [level, setLevel] = useState(0);
@@ -14,10 +15,11 @@ function App() {
   // type: action의 이름
   // payload : 함수의 매개변수 같은 느낌, 필요한 정보를 보내줄 수 있음
   const levelUp = () => {
-    dispatch({
-      type: "INCREMENT", 
-      payload:{num: 5}})
-    // setLevel(level + 1);
+    // dispatch({
+    //   type: "INCREMENT", 
+    //   payload:{num: 5}})
+    dispatch(basicActions.increment())
+    
   }
 
   const levelDown = () => {

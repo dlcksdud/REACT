@@ -24,6 +24,7 @@ ex) 로그인
 ```shell script
 npm install redux
 ```
+---
 
 # React-Redux
 - [React-Redux 링크](https://react-redux.js.org/)
@@ -47,8 +48,10 @@ root.render(
   </Provider>
 )
 ```  
-- createstore : 현재 deprecated 되어있음, configurestore 쓰는 걸 추천하고 있다.
+- `createStore` : 현재 deprecated 되어있음, configurestore 쓰는 걸 추천하고 있다.
     - configurestore의 동작원리를 정확히 이해하기 위해서 먼저 알기를 추천.
+
+---
 
 ### useDispatch
 ```javascript
@@ -90,6 +93,7 @@ function reducer(state=initialState, action) {
 
 export default reducer;
 ```  
+---
 
 ### useSelector
 - state값 가져와서 쓰고 싶으면 useSelector  
@@ -100,3 +104,73 @@ import { useSelector } from 'react-redux';
 // 생략
 <h1>{level}</h1>
 ```
+---
+
+## Redux-Toolkit
+[https://redux-toolkit.js.org/](https://redux-toolkit.js.org/)
+```shell script
+npm install @reduxjs/toolkit
+```
+- redux-tookit을 설치하면 redux가 자동으로 설치되니 기존 redux 제거해도 됨
+
+```javascript
+import { createSlice } from "@reduxjs/toolkit";
+
+const basicSlice = createSlice({
+    name: "basic",
+    initialState,
+    reducers: {
+        // reducers는 객체를 받고, 그 객체는 함수로 이루어져 있다.
+        // 그 함수는 두 개의 매개변수를 갖는다.
+        increment(state, action) {
+            // 리턴 없음
+            state.level = state.level + 1;
+        }
+        ,login(state, action) {
+            state.id = action.payload.id;
+            state.pw = action.payload.pw;
+        }
+    }
+})
+
+console.log("basic slice : " + basicSlice);
+
+export const basicActions = basicSlice.actions;
+export default basicSlice.reducer;
+```
+
+- `store.js` 에서 `createStore` 지원 안함
+- 기존 `createStore`
+    - store에 reducer를 보낼 때 combineReducer를 이용해서 보냄
+    - thunk 
+    - applyMiddlewrea
+    - composeWithDevTools  
+- 새로운 `configureStore`
+    - composeWithDevTools 자동 setup
+    - applyMiddlewrea, Thunk 자동 setup
+    - combineReducer 자동 setup
+
+```javascript
+import { configureStore } from "@reduxjs/toolkit";
+
+const store = configureStore({
+    reducer: {
+        // combinreducer에서 해주는 것과 같이 넣어줌
+        // auth :authenticate
+        // product: productReducer
+
+    }
+})
+
+export default store;
+```
+
+```javascript
+// dispatch 사용
+import { useDispatch, useSelector } from 'react-redux';
+import { basicActions } from './redux/reducer/reducer';
+
+dispatch(basicActions.increment(/*payload에 보낼 꺼 넣어줌*/))
+```
+
+

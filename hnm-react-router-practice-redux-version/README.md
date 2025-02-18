@@ -98,7 +98,6 @@ const store = createStore(
 ![redux-devtool chrome 사용이미지2](./redux-devtools2.png)
 
 
-
 ## Step
 1. 전체 상품 페이지, 로그인 페이지, 상품 상세 페이지 => 총 3개 페이지  
 2. 전체 상품 페이지에서는 전체 상품을 볼 수 있다.
