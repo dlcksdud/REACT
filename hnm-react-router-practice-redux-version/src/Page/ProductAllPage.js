@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import axios from "axios";
 import ProductCard from '../component/ProductCard';
 // bootstrap에서 Container : 아이템을 가운데에 둘 수 있게 해줌
 import { Container, Row, Col } from 'react-bootstrap';
@@ -7,10 +6,11 @@ import { useSearchParams } from 'react-router-dom';
 
 // productAction에서 객체로 반환했기 때문에 {객체명} 으로 들고와야 한다.
 import {productAction} from '../redux/actions/productAction';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 const ProductAllPage = () => {
-  const [productList, setProductList] = useState([]);
+  // const [productList, setProductList] = useState([]);
+  const productList = useSelector(state => state.product.productList);
   const [query, setQuery] = useSearchParams();
 
   const dispatch = useDispatch();

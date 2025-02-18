@@ -1,4 +1,4 @@
-# React Router 이용해서 쇼핑몰 웹사이트 만들기 (20250217 Redux-thunk 추가 update) 
+# React Router 이용해서 쇼핑몰 웹사이트 만들기 (Redux-thunk 추가 update) 
 
 ## Redux Middleware
 - 비동기 작업은 redux로 불가하다.
@@ -44,6 +44,58 @@ function incrementAsync() {
 }
 ```  
 
+## Reducer combine
+- reducer file이 여러개가 되면은 합쳐줘야 한다 -> 합친걸 store에 적용  
+  - reducer/index.js 에서 합치는 작업을 한다.  
+  - [https://redux.js.org/api/combinereducers](https://redux.js.org/api/combinereducers)
+  - reducer/index.js
+  ```javascript
+    import { combineReducers } from "redux";
+    // 합치고 싶은 reducer 들고옴
+    import authenticateReducer from "./authenticateReducer";
+    import productReducer from "./productReducer";
+
+    export default combineReducers({
+        auth : authenticateReducer,
+        product : productReducer
+    });
+  ```
+  - redux/store.js
+  ```javascript
+  import { createStore, applyMiddleware } from "redux";
+  import { thunk } from "redux-thunk";
+  import rootReducer from "./reducers"
+  // reducers 까지만 경로 잡아도 자동으로 index.js 읽어옴
+
+  let store = createStore(rootReducer, applyMiddleware(thunk));
+
+  export default store;
+  ```
+  - reducer를 combine한 후에는 reducer에 접근할 때(useSelector) 어떤 reducer의 state를 읽을지 정해줘야 함 
+  ```javascript
+  const productList = useSelector(state => state.product.productList);
+  ```
+
+## Redux DevTools
+- 크롬 확장자에서 받기 [https://chromewebstore.google.com/detail/redux-devtools](https://chromewebstore.google.com/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=ko&pli=1)
+- devtools 이용 npm module download [https://github.com/reduxjs/redux-devtools](https://github.com/reduxjs/redux-devtools/tree/main/extension#installation)
+```shell script
+npm install --save @redux-devtools/extension
+```
+```javascript
+import { createStore, applyMiddleware } from 'redux';
+import { composeWithDevTools } from '@redux-devtools/extension';
+
+const store = createStore(
+  reducer,
+  composeWithDevTools(
+    applyMiddleware(...middleware),
+    // other store enhancers if any
+  ),
+);
+```
+![redux-devtool chrome 사용이미지](./redux-devtools.png)
+![redux-devtool chrome 사용이미지2](./redux-devtools2.png)
 
 
 
