@@ -155,7 +155,7 @@ import { configureStore } from "@reduxjs/toolkit";
 
 const store = configureStore({
     reducer: {
-        // combinreducer에서 해주는 것과 같이 넣어줌
+        // combinereducer에서 해주는 것과 같이 넣어줌
         // auth :authenticate
         // product: productReducer
 
