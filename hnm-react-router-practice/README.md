@@ -17,7 +17,7 @@
 	```shell script
 	npm i json-server@0.17.4
  	// 위 명령어로 했는데 json-server --watch db.json --port 3004 명령어가 안될 시
- 	npm install -g json-server
+ 	npm install -g json-server@0.17.4
  	// 글로벌로 설치해줘야 함
 	```  
 2-1. Product Card 만들기  
