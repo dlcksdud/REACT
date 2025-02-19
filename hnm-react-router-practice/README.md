@@ -16,6 +16,9 @@
 	- Jsonserver가 1버전으로 업데이트가 되었는데 최신버전이 불안정하다는 이슈가 있어서 0버전대 사용함
 	```shell script
 	npm i json-server@0.17.4
+ 	// 위 명령어로 했는데 json-server --watch db.json --port 3004 명령어가 안될 시
+ 	npm install -g json-server
+ 	// 글로벌로 설치해줘야 함
 	```  
 2-1. Product Card 만들기  
 	- 필요한 것 : img, choice, 제목, 가격, 신제품  
