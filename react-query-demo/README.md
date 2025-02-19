@@ -32,7 +32,7 @@ root.render(
 );
 ```
 
-## reac-query devTools
+## react-query devTools
 ```shell script
 npm i @tanstack/react-query-devtools
 ```
