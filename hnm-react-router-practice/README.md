@@ -19,6 +19,20 @@
  	// 위 명령어로 했는데 json-server --watch db.json --port 3004 명령어가 안될 시
  	npm install -g json-server@0.17.4
  	// 글로벌로 설치해줘야 함
+
+ 	// 만약 글로벌로 설치했는데
+ 	PS C:\Workspaces\REACT\react-query-demo> json-server --watch db.json --port 3004
+	json-server : 이 시스템에서 스크립트를 실행할 수 없으므로 C:\Users\user\AppData\Roaming\npm\json-server.ps1 파일을 로드할 수 없습니다. 자세한 내용은 about_Execution_Policies(https:/ 
+	/go.microsoft.com/fwlink/?LinkID=135170)를 참조하십시오.
+	위치 줄:1 문자:1
+	+ json-server --watch db.json --port 3004
+	+ ~~~~~~~~~~~
+	    + CategoryInfo          : 보안 오류: (:) [], PSSecurityException
+	    + FullyQualifiedErrorId : UnauthorizedAccess
+	PS C:\Workspaces\REACT\react-query-demo> npx json-server --watch db.json --port 3004
+
+ 	// 위와 같은 에러 발생시
+ 	npx json-server --watch db.json --port 3004
 	```  
 2-1. Product Card 만들기  
 	- 필요한 것 : img, choice, 제목, 가격, 신제품  
