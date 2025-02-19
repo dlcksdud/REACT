@@ -178,9 +178,9 @@ dispatch(basicActions.increment(/*payload에 보낼 꺼 넣어줌*/))
 - redux의 action type 값을 받고, promise를 return하는 callback 함수를 받는다.
 - promise lifecycle action type을 만든다.
   - type의 종류
-  - pending : async 시작
-  - fulfilled : 성공
-  - rejected : 에러
+    - pending : async 시작
+    - fulfilled : 성공
+    - rejected : 에러
 - payloadCreator
     - return promise
     - two arguments
@@ -198,23 +198,18 @@ let initialState = {
     error: null
 }
 
-export const getProducts = createAsyncThunk(
-            'product/fetchAll', 
-            (searchQuery, thunkAPI)=> {
-                let url = `https://my-json-server.typicode.com/dlcksdud/REACT/products?q=${searchQuery}`;
-                axios.get(url)
-                    .then((res)=> {
-                        console.log(res.data);
-                        // setProductList(res.data);
-                        // dispatch({type: "GET_PRODUCT_SUCCESS", payload: {data: res.data}})
-                        return res.data;
-                    })
-                    .catch((err)=>{
-                        // console.log(err);
-                        thunkAPI.rejectWithValue(err);
-                    })
-            }
-)
+export const fetchProducts = createAsyncThunk(
+    "product/fetchAll",
+    async (searchQuery, thunkAPI) => {
+        try {
+            let url = `https://my-json-server.typicode.com/dlcksdud/REACT/products?q=${searchQuery}`;
+            const response = await axios.get(url);
+            return response.data; // 데이터를 반환해야 reducer에서 받을 수 있음
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error.response?.data || error.message);
+        }
+    }
+);
 
 const productSlice = createSlice({
     name: "product",
@@ -249,9 +244,8 @@ export default productSlice.reducer;
 ```
 - `createSlice`에서 
     - `reducers`: 동기적으로 자신의 state를 바꾸는 경우
-    - `extraReducers`: 외부 api 등에 의해 호출된 extra한 reducer들, 직접적으로 호출하지 않고 createㅁ
-    를 통해서 호출할거기 때문
+    - `extraReducers`: 외부 api 등에 의해 호출된 extra한 reducer들, 직접적으로 호출하지 않고 `createAsyncThunk`를 통해서 호출할거기 때문
 
-- 위와 같이 createAsyncThunk와 createSlice를 함께 써주면 파일 이름도 `productSlice.js`로 해줄 수 있음
-    - `productSlice.js`에 createAsyncThunk와 createSlice가 있으니 `productAction.js`도 필요 없게 됨ㄹ
+- 위와 같이 `createAsyncThunk`와 `createSlice`를 함께 써주면 파일 이름도 `productSlice.js`로 해줄 수 있음
+    - `productSlice.js`에 `createAsyncThunk`와 `createSlice`가 있으니 `productAction.js`도 필요 없게 됨
 
