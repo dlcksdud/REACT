@@ -32,4 +32,47 @@ root.render(
 );
 ```
 
+## reac-query devTools
+```shell script
+npm i @tanstack/react-query-devtools
+```
+```javascript
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+
+function App() {
+  return (
+    <QueryClientProvider client={queryClient}>
+      {/* The rest of your application */}
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
+  )
+}
+```
+
+---
+## useQuery
+```javascript
+import { useQuery } from '@tanstack/react-query'
+
+const {isLoading, data, isError, error} = useQuery({
+    queryKey: ['posts'],
+    queryFn: () => {
+        return axios.get('http://localhost:3004/posts')
+    },
+    retry: 1 // api 호출 실패 시 1번 더 재시도
+});
+console.log(data, isLoading);
+console.log(isError, error);
+```
+- api 호출 각각에 이름을 정해줄 수 있다. -> queryKey
+  - 각 호출의 이름이 unique해야 한다.
+- 컴포넌트가 호출될 때 자동으로 useQuery 호출 됨
+- api 호출 실패 시 3번 더 시도함 : retry 기능
+  - 기본 재시도 횟수는 3번
+  - 몇 번 더 시도할 지 횟수 지정 가능
+
+
+
+
+
 
