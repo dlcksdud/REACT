@@ -5,7 +5,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { useSearchParams } from 'react-router-dom';
 
 // productAction에서 객체로 반환했기 때문에 {객체명} 으로 들고와야 한다.
-import {productAction} from '../redux/actions/productAction';
+import {productActions} from '../redux/reducers/productReducer';
 import { useDispatch, useSelector } from 'react-redux';
 
 const ProductAllPage = () => {
@@ -19,7 +19,7 @@ const ProductAllPage = () => {
     let searchQuery = query.get('q') || "";
 
     // 바로 store로 안가고 productAction의 getProducts 함수를 거쳐서 가도록
-    dispatch(productAction.getProducts(searchQuery));
+    dispatch(productActions.getAllProducts(searchQuery));
   }
 
   useEffect(() => {

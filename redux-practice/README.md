@@ -172,5 +172,74 @@ import { basicActions } from './redux/reducer/reducer';
 
 dispatch(basicActions.increment(/*payload에 보낼 꺼 넣어줌*/))
 ```
+---
 
+## createAsyncThunk
+- redux의 action type 값을 받고, promise를 return하는 callback 함수를 받는다.
+- promise lifecycle action type을 만든다.
+  - type의 종류
+  - pending : async 시작
+  - fulfilled : 성공
+  - rejected : 에러
+- payloadCreator
+    - return promise
+    - two arguments
+        - args : api 호출에 필요한 정보 받음
+        - thunkAPI : api 호출에 필요한 것들 줌 (ex. dispatch, getState 등)
+
+```javascript
+// hnm 쇼핑몰 프로젝트에서 productReducer.js
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
+
+let initialState = {
+    productList: []
+}
+
+const getProducts = createAsyncThunk(
+            'product/fetchAll', 
+            (searchQuery, thunkAPI)=> {
+                let url = `https://my-json-server.typicode.com/dlcksdud/REACT/products?q=${searchQuery}`;
+                axios.get(url)
+                    .then((res)=> {
+                        console.log(res.data);
+                        // setProductList(res.data);
+                        // dispatch({type: "GET_PRODUCT_SUCCESS", payload: {data: res.data}})
+                        return res.data;
+                    })
+                    .catch((err)=>{
+                        console.log(err);
+                    })
+            }
+)
+
+const productSlice = createSlice({
+    name: "product",
+    initialState,
+    reducers: {
+        // getAllProducts(state, action) {
+        //     state.productList = action.payload.data;
+        // }
+    },
+    extraReducers: (builder) => {
+        builder
+            .addCase(getProducts.pending, (state) => {
+
+            })
+            .addCase(getProducts.fulfilled, (state, action) => {
+                state.productList = action.payload;
+            })
+            .addCase(getProducts.rejected, (state) => {
+
+            })
+    }
+})
+
+export const productActions = productSlice.actions;
+export default productSlice.reducer;
+```
+- `createSlice`에서 
+    - `reducers`: 동기적으로 자신의 state를 바꾸는 경우
+    - `extraReducers`: 외부 api 등에 의해 호출된 extra한 reducer들, 직접적으로 호출하지 않고 createㅁ
+    를 통해서 호출할거기 때문
 

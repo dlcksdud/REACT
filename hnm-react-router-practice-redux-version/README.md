@@ -13,6 +13,8 @@
 	- redux-saga
 	- redux-thunk : 우리가 배울 것
 
+---
+
 ## Redux-thunk
 [https://github.com/reduxjs/redux-thunk](https://github.com/reduxjs/redux-thunk)
 - Redux-thunk 설치
@@ -43,6 +45,7 @@ function incrementAsync() {
   }
 }
 ```  
+---
 
 ## Reducer combine
 - reducer file이 여러개가 되면은 합쳐줘야 한다 -> 합친걸 store에 적용  
@@ -76,6 +79,8 @@ function incrementAsync() {
   const productList = useSelector(state => state.product.productList);
   ```
 
+---
+
 ## Redux DevTools
 - 크롬 확장자에서 받기 [https://chromewebstore.google.com/detail/redux-devtools](https://chromewebstore.google.com/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=ko&pli=1)
 - devtools 이용 npm module download [https://github.com/reduxjs/redux-devtools](https://github.com/reduxjs/redux-devtools/tree/main/extension#installation)
@@ -97,6 +102,8 @@ const store = createStore(
 ![redux-devtool chrome 사용이미지](./redux-devtools.png)
 ![redux-devtool chrome 사용이미지2](./redux-devtools2.png)
 
+---
+* redux-toolkit, createAsyncThunk 는 redux-practice readme.md에 소개되어 있습니다.
 
 ## Step
 1. 전체 상품 페이지, 로그인 페이지, 상품 상세 페이지 => 총 3개 페이지  
