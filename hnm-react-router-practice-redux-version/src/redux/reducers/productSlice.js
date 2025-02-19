@@ -3,7 +3,8 @@ import axios from "axios";
 
 let initialState = {
     productList: [],
-    isLoading: false
+    isLoading: false,
+    error: null
 }
 
 // function productReducer(state = initialState, action) {
@@ -19,23 +20,18 @@ let initialState = {
 //     }
 // }
 
-const getProducts = createAsyncThunk(
-            'product/fetchAll', 
-            (searchQuery, thunkAPI)=> {
-                let url = `https://my-json-server.typicode.com/dlcksdud/REACT/products?q=${searchQuery}`;
-                axios.get(url)
-                    .then((res)=> {
-                        console.log(res.data);
-                        // setProductList(res.data);
-                        // dispatch({type: "GET_PRODUCT_SUCCESS", payload: {data: res.data}})
-                        return res.data;
-                    })
-                    .catch((err)=>{
-                        // console.log(err);
-                        thunkAPI.rejectWithValue(err);
-                    })
-            }
-)
+export const fetchProducts = createAsyncThunk(
+    "product/fetchAll",
+    async (searchQuery, thunkAPI) => {
+        try {
+            let url = `https://my-json-server.typicode.com/dlcksdud/REACT/products?q=${searchQuery}`;
+            const response = await axios.get(url);
+            return response.data; // 데이터를 반환해야 reducer에서 받을 수 있음
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error.response?.data || error.message);
+        }
+    }
+);
 
 const productSlice = createSlice({
     name: "product",
@@ -50,18 +46,20 @@ const productSlice = createSlice({
     // 직접적으로 호출하지 않고 createAsyncThunk 통해서 호출할거기 때문
     extraReducers: (builder) => {
         builder
-            .addCase(getProducts.pending, (state) => {
+            .addCase(fetchProducts.pending, (state) => {
                 // 일반적으로 pending 상태에서는 로딩스피너
                 state.isLoading = true;
                 
             })
-            .addCase(getProducts.fulfilled, (state, action) => {
+            .addCase(fetchProducts.fulfilled, (state, action) => {
                 state.productList = action.payload;
                 state.isLoading = false;
             })
-            .addCase(getProducts.rejected, (state) => {
+            .addCase(fetchProducts.rejected, (state, action) => {
                 // 실패 케이스
                 state.isLoading = false;
+                state.error = action.payload;
+
             })
     }
 })

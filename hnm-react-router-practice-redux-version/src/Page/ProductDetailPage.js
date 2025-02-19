@@ -24,7 +24,7 @@ const ProductDetailPage = () => {
   }
 
   return (
-    <Container>
+    <Container id='productDetail-container'>
       <Row>
         <Col className='product-img'>
           <img src={product?.img}></img>

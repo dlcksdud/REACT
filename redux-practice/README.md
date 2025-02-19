@@ -193,10 +193,12 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 let initialState = {
-    productList: []
+    productList: [],
+    isLoading: false,
+    error: null
 }
 
-const getProducts = createAsyncThunk(
+export const getProducts = createAsyncThunk(
             'product/fetchAll', 
             (searchQuery, thunkAPI)=> {
                 let url = `https://my-json-server.typicode.com/dlcksdud/REACT/products?q=${searchQuery}`;
@@ -208,7 +210,8 @@ const getProducts = createAsyncThunk(
                         return res.data;
                     })
                     .catch((err)=>{
-                        console.log(err);
+                        // console.log(err);
+                        thunkAPI.rejectWithValue(err);
                     })
             }
 )
@@ -224,12 +227,18 @@ const productSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(getProducts.pending, (state) => {
-
+                // 일반적으로 pending 상태에서는 로딩스피너
+                state.isLoading = true;
+                
             })
             .addCase(getProducts.fulfilled, (state, action) => {
                 state.productList = action.payload;
+                state.isLoading = false;
             })
-            .addCase(getProducts.rejected, (state) => {
+            .addCase(getProducts.rejected, (state, action) => {
+                // 실패 케이스
+                state.isLoading = false;
+                state.error = action.payload;
 
             })
     }
@@ -242,4 +251,7 @@ export default productSlice.reducer;
     - `reducers`: 동기적으로 자신의 state를 바꾸는 경우
     - `extraReducers`: 외부 api 등에 의해 호출된 extra한 reducer들, 직접적으로 호출하지 않고 createㅁ
     를 통해서 호출할거기 때문
+
+- 위와 같이 createAsyncThunk와 createSlice를 함께 써주면 파일 이름도 `productSlice.js`로 해줄 수 있음
+    - `productSlice.js`에 createAsyncThunk와 createSlice가 있으니 `productAction.js`도 필요 없게 됨ㄹ
 

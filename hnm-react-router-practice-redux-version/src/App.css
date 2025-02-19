@@ -134,5 +134,8 @@ button.btn.btn-dark {
     border-radius: 0;
     width: 100%;
 }
+#productDetail-container {
+    margin-bottom: 40px;
+}
 
 
