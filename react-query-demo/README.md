@@ -49,6 +49,10 @@ function App() {
 }
 ```
 
+![캐쉬관리공간이미지](./cache.png)
+- 캐쉬관리 공간
+- 사진 속 공간에 뜨는 정보가 캐쉬에 있다는 의미
+
 ---
 ## useQuery
 ```javascript

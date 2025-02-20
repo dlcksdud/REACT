@@ -1,7 +1,8 @@
 import './App.css';
 import {Routes, Route, Link} from "react-router-dom";
-import HomePage from './Componrnt/HomePage';
-import ReactQueryPage from './Componrnt/ReactQueryPage';
+import HomePage from './Component/HomePage';
+import ReactQueryPage from './Component/ReactQueryPage';
+import NomalPage from './Component/NomalPage';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       </div>
       <Routes>
         <Route path="/" element={<HomePage />}></Route>
+        <Route path="/nomal-fetch" element={<NomalPage />}></Route>
         <Route path="/react-query" element={<ReactQueryPage />}></Route>
       </Routes>
     </div>

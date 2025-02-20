@@ -13,7 +13,7 @@ const ReactQueryPage = () => {
       return data.data
     }
   });
-  console.log(data[0].title);
+
 
   // const tlqkf = data.title;
   if(isLoading) {
