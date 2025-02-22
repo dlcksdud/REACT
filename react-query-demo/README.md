@@ -63,7 +63,11 @@ const {isLoading, data, isError, error} = useQuery({
     queryFn: () => {
         return axios.get('http://localhost:3004/posts')
     },
-    retry: 1 // api 호출 실패 시 1번 더 재시도
+    retry: 1, // api 호출 실패 시 1번 더 재시도
+    select: (data) => { // 원하는 값을 가져오기
+      return data.data;
+    },
+    gcTime: 5000, // 5초 후 캐쉬 비우기 (단위 : ms)
 });
 console.log(data, isLoading);
 console.log(isError, error);
@@ -75,8 +79,27 @@ console.log(isError, error);
   - 기본 재시도 횟수는 3번
   - 몇 번 더 시도할 지 횟수 지정 가능
 
+### 캐쉬 관리
+- api를 호출할 때 캐쉬에 있는지 확인 후 캐쉬에 있으면 로딩없이 가져옴 그 후 fetch 시도.
+- 유저 경험이 훨씬 더 증가
+- 캐쉬 수명도 조절 가능
+  - `gcTime: 5000, // 5초 후 캐쉬 비우기`
+  - react-query v5는 gcTime, 하위버전은 cacheTime이라고 한다.
+  - geTime 기본값(지정 안했을시) : 5분
 
+### API 호출 통제
+- 캐쉬를 보여주는 동안 api 호출에 대한 것도 통제 가능
+  - ex) 3초에 한번씩 api 호출 등
 
+![react query lifecycle](./react_query_lifecycle.jpg)
+
+- fetching : api가 호출되고 있을 때
+- 데이터 상태 2가지
+  - fresh : 데이터가 막 왔을 때 : api 호출 안함(fetch 안함)
+  - Stale : 데이터의 유통기한이 끝남 : fetch 함
+- fresh 상태를 길게 주면 api 호출을 필요할 때만 할 수 있다.  
+- fresh의 기본값은 0  
+- inactive : cache는 이때부터 카운팅 됨  
 
 
 

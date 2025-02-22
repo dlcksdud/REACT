@@ -19,7 +19,7 @@ const NomalPage = () => {
   return (
     <div>
         {data?.map((item, idx) => {
-            <div key={idx}>{item.title}</div>
+            return <div key={idx}>{item.title}</div>
         })}
     </div>
   )

@@ -9,6 +9,7 @@ function App() {
     <div>
       <div className='app'>
         <Link to="/">홈페이지~</Link>
+        <Link to="/nomal-fetch">NOMAL FETCH</Link>
         <Link to="/react-query">리액트 쿼리~</Link>
       </div>
       <Routes>
