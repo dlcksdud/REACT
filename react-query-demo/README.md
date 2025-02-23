@@ -98,8 +98,57 @@ console.log(isError, error);
   - fresh : 데이터가 막 왔을 때 : api 호출 안함(fetch 안함)
   - Stale : 데이터의 유통기한이 끝남 : fetch 함
 - fresh 상태를 길게 주면 api 호출을 필요할 때만 할 수 있다.  
-- fresh의 기본값은 0  
+- fresh의 기본값은 0, staleTime의 기본값 0
 - inactive : cache는 이때부터 카운팅 됨  
+- api 호출 한 번 하고 안해도 될 경우, 자주 호출하지 않는 api 경우 ex.페이지의 카테고리
+```javascript
+// 생략
+staleTime: 10000, // 10초간 api 호출 안함
+```
+- staleTime보다 gcTime이 짧은 경우에는?
+  - 남은 gcTime동안은 cache가 없다는 것.
+  - staleTime 상관없이 cache가 없으면 api 호출한다.
+  - 따라서 staleTime > gtTime 해야 상도덕이다.  
+- api 호출 주기 정하기
+```javascript
+refetchInterval: 3000, // 3초마다 api 호출
+```
+- 컴포넌트를 다시 들어올 때 api 호출 여부
+  - 기본값 true
+  - stale보다 강력한 느낌, 한 번 부르고 안부를꺼다하면 false
+```javascript
+refetchOnMount: false
+```
+- 윈도우에서 사용중인 창으로 돌아오면 자동 api 호출
+  - 사용자에게 매번 새로운 데이터를 빨리 보여줘야 할 때 사용
+```javascript
+refetchOnWindowFocus: true
+```
+- 다른 여러가지 옵션들은 공식문서에서 찾을 수 있다.  
+- 버튼을 클릭할 때 api가 호출되게 하기
+```javascript
+const {isLoading, data, isError, error, refetch} = useQuery({
+    // 생략
+  });
+// 생략
+<button onClick={refetch}>post리스트 다시 들고오기</button>
+```
+- 버튼 누르기 전(초기)에는 api 호출 안되고, 버튼 클릭할 때만 api 호출
+```javascript
+enabled: false // 기본값 true
+// ex) 검색조건 있으면 api 호출
+enabled: !!keyword // 조건을 써줄 수 있음
+```
+- Detail api 호출하기
+  - ex) posts/1
+```javascript
+const {isLoading, data, isError, error, refetch} = useQuery({
+    queryKey: ['posts', 1], // 보내주고 싶은 값을 queryKey에 넣어줄 수 있음
+    queryFn: (queryData) => {
+        const id = queryData.queryKey[1];
+        return axios.get(`http://localhost:3004/posts/${id}`)
+    },
+    // 생략
+  });
 
-
-
+```
