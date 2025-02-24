@@ -1,6 +1,6 @@
 import React from 'react'
 
-const AppL = () => {
+const AppLayout = () => {
   return (
     <div>navbar</div>
   )

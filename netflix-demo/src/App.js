@@ -1,8 +1,10 @@
-import { Route } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import AppLayout from './layout/AppLayout';
-import Homepage from './pages/Homepage/Homepage';
+import Homepage from './pages/Homepage/HomePage';
 import MoviePage from './pages/Movies/MoviePage';
+import MovieDetailPage from './pages/MovieDetail/MovieDetailPage';
+import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 
 /**
  * 홈페이지 : /
@@ -23,6 +25,7 @@ function App() {
             <Route path=':id' element={<MovieDetailPage />}></Route>
           </Route>
         </Route>
+        <Route path='*' element={<NotFoundPage />}></Route>
       </Routes>
     </div>
   );

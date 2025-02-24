@@ -1,0 +1,12 @@
+.notFount-div {
+    display: flex;
+    justify-content: center;
+}
+.notFount-div .text-center h1, p {
+    text-align: center;
+}
+.motion-img-div, a {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
