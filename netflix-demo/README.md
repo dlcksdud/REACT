@@ -19,3 +19,25 @@
 const apiKey = process.env.REACT_APP_API_KEY;
 console.log(apiKey);
 ```
+
+### 라우터 설정
+```jsx
+function App() {
+  return (
+    <div className="App">
+      <Routes>
+        <Route path='/' element={<AppLayout />}> {/**페이지마다 다른 navbar 설정할 경우 */}
+          <Route index element={<Homepage />}></Route> {/*index : 위의 path를 그대로 쓰겠다는 의미*/}
+          {/* <Route path='/movies' element={<MoviePage />}></Route>
+          <Route path='/movies/:id' element={<MovieDetailPage />}></Route> */}
+          <Route path='movies'>
+            {/**서브 라우트 */}
+            <Route index element={<MoviePage />}></Route>
+            <Route path=':id' element={<MovieDetailPage />}></Route>
+          </Route>
+        </Route>
+      </Routes>
+    </div>
+  );
+}
+```
