@@ -150,5 +150,51 @@ const {isLoading, data, isError, error, refetch} = useQuery({
     },
     // 생략
   });
+```
+
+### 커스텀 훅 만들기
+- 로직적인 부분과 UI는 분리하는게 좋다.
+  - 장점) usePostQuery()를 쓰고 싶은 곳에 다 쓸 수 있다.
+```javascript
+// src/hooks/usePosts.js
+export const usePostQuery = () =>  {
+  return useQuery({
+    queryKey: ['posts'],
+    queryFn: () => {
+        return axios.get(`http://localhost:3004/posts`)
+    },
+    retry: 1,
+    select: (data) => {
+      return data.data
+    },
+  });
+}
+```
+```javascript
+// src/Component/ReactQueryPage.js
+const {data, isLoading, isError, error, refetch} = usePostQuery();
+```
+
+### 쿼리를 여러개 부르는 법 : useQueries
+```javascript
+const ids = [1, 2, 3, 4];
+
+const fetchPostDetail = (id) => {
+  return axios.get(`http://localhost:3004/posts/${id}`);
+}
+
+const results = useQueries({
+  queries: ids.map((id) => {
+    return {
+      queryKey: ["posts", id],
+      queryFn: () => fetchPostDetail(id),
+    }
+  }),
+  combine: (results) => {
+    return {
+      data: results.map((result) => result.data)
+    }
+  }
+})
 
 ```
