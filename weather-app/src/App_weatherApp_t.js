@@ -22,6 +22,7 @@ import ClipLoader from "react-spinners/ClipLoader";
  * 7. 버튼 클릭 시 : 색깔이 변하도록 하여 클릭한지 알 수 있도록 변경
  */
 function App() {
+
   // 1. 앱이 실행되자마자 현재 위치 기반의 날씨가 보인다.
   const [weather, setWeather] = useState('');
 
@@ -38,8 +39,8 @@ function App() {
   // 버튼 클릭 시 : 색깔이 변하도록 하여 어떤 걸 클릭하고 있는지 알 수 있게
   const [ing, setIng] = useState('');
   const [selectedCity, setSelectedCity] = useState(null);
-  
 
+  const apiKey = process.env.REACT_APP_API_KEY;
 
   // 상황에 맞춰서 호출을 달리 해준다.
   useEffect(() => {
@@ -86,7 +87,7 @@ function App() {
     setLoading(true);
 
 
-      axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=e8c53d0373070c7d2fc6f2a23d108dbb&units=metric`)
+      axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`)
     .then((response) => {
         setLoading(false);
         console.log("response : ", response);
@@ -109,7 +110,7 @@ function App() {
     setLoading(true);
 
     //https://api.openweathermap.org/data/2.5/weather?q=Bangkok,TH&appid=YOUR_API_KEY
-    axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=e8c53d0373070c7d2fc6f2a23d108dbb&units=metric`)
+    axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`)
 
     .then((response) => {
         setLoading(false);

@@ -26,6 +26,7 @@ function App() {
 //   const [tempF, setTempF] = useState("");
 //   const [tempC, setTempC] = useState("");
 
+  const apiKey = process.env.REACT_APP_API_KEY;
 
   useEffect(() => {
     getCurrentLocation();
@@ -48,7 +49,7 @@ function App() {
   const getCurrentLocationWeather = (latitude, longitude) => {
     // https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
     // &units=metric 붙이면 섭씨온도 출력 가능
-    axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=e8c53d0373070c7d2fc6f2a23d108dbb&units=metric`)
+    axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`)
     .then((response) => {
         console.log("response : ", response);
         console.log("도시명 : ", response.data.name);
@@ -71,7 +72,7 @@ function App() {
   const getSelectLocationWeather = (city) => {
     console.log("city?? ", city);
     //https://api.openweathermap.org/data/2.5/weather?q=Bangkok,TH&appid=YOUR_API_KEY
-    axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=e8c53d0373070c7d2fc6f2a23d108dbb&units=metric`)
+    axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`)
     .then((response) => {
         console.log("response.data : ", response.data);
         console.log("도시명 : ", response.data.name);

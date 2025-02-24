@@ -11,4 +11,11 @@
     - `npm i react-bootstrap bootstrap`
     - `npm i axios`
     - `npm i @tanstack/react-query @tanstack/react-query-devtools`
-    
+
+### API_KEY 숨기기
+- 프로젝트 루트에 `.env` 만들어서 `REACT_APP_API_KEY` 저장 : 프리픽스 `REACT_APP_` 필수
+- `.gitignore`에 `.env` 설정
+```javascript
+const apiKey = process.env.REACT_APP_API_KEY;
+console.log(apiKey);
+```
