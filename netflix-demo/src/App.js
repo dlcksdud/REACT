@@ -5,6 +5,7 @@ import Homepage from './pages/Homepage/HomePage';
 import MoviePage from './pages/Movies/MoviePage';
 import MovieDetailPage from './pages/MovieDetail/MovieDetailPage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 /**
  * 홈페이지 : /

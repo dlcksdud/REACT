@@ -5,7 +5,7 @@
 .notFount-div .text-center h1, p {
     text-align: center;
 }
-.motion-img-div, a {
+.motion-img-div, .link-class {
     display: flex;
     align-items: center;
     flex-direction: column;

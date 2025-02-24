@@ -42,4 +42,13 @@ function App() {
 }
 ```
 
-
+### Outlet 
+- react-router-dom에서 제공하는 기능
+- react-router안에 있는 자손들을 갖고 올 때 도와주는 컴포넌트 
+```javascript
+<div>
+    <Navbar expand="lg" className="bg-body-tertiary" id='navbar-self'>
+    </Navbar>
+    <Outlet></Outlet>
+</div>
+```

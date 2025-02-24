@@ -29,7 +29,7 @@ export default function NotFound() {
         <p className="mt-2 text-gray-600">하지만 걱정 마세요, 돌아갈 길이 있어요! 🏡</p>
         <Link
           to="/"
-          className="mt-4 inline-block bg-pink-500 text-white px-6 py-2 rounded-full text-lg shadow-lg hover:bg-pink-600 transition"
+          className="link-class"
         >
           홈으로 가기
         </Link>
