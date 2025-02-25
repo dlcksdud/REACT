@@ -49,6 +49,7 @@ function App() {
 ```javascript
 <div>
     <Navbar expand="lg" className="bg-body-tertiary" id='navbar-self'>
+    {/*생략*/}
     </Navbar>
     <Outlet></Outlet>
 </div>
