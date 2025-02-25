@@ -6,13 +6,16 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import './AppLayout.style.css';
 import { Outlet } from 'react-router-dom';
+import chanflixLogo from '../chanflix_logo.png';
 
 const AppLayout = () => {
   return (
       <div>
         <Navbar expand="lg" className="bg-body-tertiary" id='navbar-self'>
         <Container fluid>
-          <Navbar.Brand href="/" className='logo-class'>CHANFLIX</Navbar.Brand>
+          <Navbar.Brand href="/" className='logo-class'>
+            <img src={chanflixLogo} width={100}></img>
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav
@@ -20,8 +23,8 @@ const AppLayout = () => {
               style={{ maxHeight: '100px' }}
               navbarScroll
             >
-              <Nav.Link href="#action1">Home</Nav.Link>
-              <Nav.Link href="#action2">Link</Nav.Link>
+              <Nav.Link href="/" id='navlink-home'>Home</Nav.Link>
+              <Nav.Link href="#action2" id='navlink-link'>Link</Nav.Link>
             </Nav>
             <Form className="d-flex">
               <Form.Control
