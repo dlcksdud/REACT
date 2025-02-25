@@ -12,6 +12,7 @@
     - `npm i axios`
     - `npm i @tanstack/react-query @tanstack/react-query-devtools`
 
+
 ### API_KEY 숨기기
 - 프로젝트 루트에 `.env` 만들어서 `REACT_APP_API_KEY` 저장 : 프리픽스 `REACT_APP_` 필수
 - `.gitignore`에 `.env` 설정
@@ -52,3 +53,43 @@ function App() {
     <Outlet></Outlet>
 </div>
 ```
+
+### axios Instance
+[https://axios-http.com/kr/docs/instance](https://axios-http.com/kr/docs/instance)
+```javascript
+const instance = axios.create({
+  baseURL: 'https://some-domain.com/api/',
+  timeout: 1000, // 얼마나 응답값을 오래 기다릴지
+  headers: {'X-Custom-Header': 'foobar'} // 헤더값 설정
+});
+```  
+### axios Interceptor
+[https://axios-http.com/kr/docs/interceptors](https://axios-http.com/kr/docs/interceptors)
+```javascript
+// 요청 인터셉터 추가하기
+axios.interceptors.request.use(function (config) {
+    // 요청이 전달되기 전에 작업 수행
+    return config;
+  }, function (error) {
+    // 요청 오류가 있는 작업 수행
+    return Promise.reject(error);
+});
+
+// 응답 인터셉터 추가하기
+axios.interceptors.response.use(function (response) {
+    // 2xx 범위에 있는 상태 코드는 이 함수를 트리거 합니다.
+    // 응답 데이터가 있는 작업 수행
+    return response;
+  }, function (error) {
+    // 2xx 외의 범위에 있는 상태 코드는 이 함수를 트리거 합니다.
+    // 응답 오류가 있는 작업 수행
+    return Promise.reject(error);
+});
+```
+
+## Step - Hompage
+1. 배너 : popular movie의 첫번째 영화를 항상 띄울 수 있도록
+2. popular movie
+3. top rated movie
+4. upcoming movie
+
