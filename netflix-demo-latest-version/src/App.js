@@ -14,7 +14,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
  */
 function App() {
   return (
-    <div className="App">
+    <div id='back-color'>
       <Routes>
         <Route path='/' element={<AppLayout />}> {/**페이지마다 다른 navbar 설정할 경우 */}
           <Route index element={<Homepage />}></Route> {/*index : 위의 path를 그대로 쓰겠다는 의미*/}
@@ -31,5 +31,6 @@ function App() {
     </div>
   );
 }
+
 
 export default App;

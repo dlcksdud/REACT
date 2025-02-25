@@ -14,7 +14,7 @@ const AppLayout = () => {
         <Navbar expand="lg" className="bg-body-tertiary" id='navbar-self'>
         <Container fluid>
           <Navbar.Brand href="/" className='logo-class'>
-            <img src={chanflixLogo} width={100}></img>
+            <img src={chanflixLogo} width={200}></img>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
@@ -24,13 +24,13 @@ const AppLayout = () => {
               navbarScroll
             >
               <Nav.Link href="/" id='navlink-home'>Home</Nav.Link>
-              <Nav.Link href="#action2" id='navlink-link'>Link</Nav.Link>
+              <Nav.Link href="/movies" id='navlink-link'>Movies</Nav.Link>
             </Nav>
             <Form className="d-flex">
               <Form.Control
                 type="search"
                 placeholder="Search"
-                className="me-2"
+                className="me-2 input"
                 aria-label="Search"
               />
               <Button variant="outline-success">Search</Button>
