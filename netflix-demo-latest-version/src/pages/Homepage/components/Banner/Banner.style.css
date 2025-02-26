@@ -1,0 +1,18 @@
+.banner {
+    height: 56vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    background-size: cover;
+
+}
+
+/*그라데이션 효과 주기*/
+.banner::before {
+    content:'';
+    background:linear-gradient(to top, black, transparent);
+    position: absolute;
+    left: 0;
+    height: 56vh; 
+    width: 100%;
+}
