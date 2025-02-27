@@ -94,3 +94,15 @@ axios.interceptors.response.use(function (response) {
 3. top rated movie
 4. upcoming movie
 
+## react multi carousel
+- 슬라이드 만들기  
+[https://www.npmjs.com/package/react-multi-carousel](https://www.npmjs.com/package/react-multi-carousel)
+```shellscript
+npm install react-multi-carousel --save
+```
+```javascript
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
+```
+
+
