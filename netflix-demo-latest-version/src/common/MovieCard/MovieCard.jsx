@@ -11,15 +11,20 @@ const MovieCard = ({movie}) => {
     const {data: genreData} = useMovieGenreQuery();
 
     const showGenre = (genreIdList) => {
-        
+        if(!genreData) return []
+        const genreNameList = genreIdList.map((id) => {
+            const genreObj = genreData.find((genre) => genre.id === id)
+            return genreObj.name;
+        }) 
+        return genreNameList;
     }
 
   return (
     <div className='movie-card' style={{backgroundImage: "url(" + `https://media.themoviedb.org/t/p/w600_and_h900_bestv2${movie.poster_path}` + ")"}}>
         <div className='overlay'>
             <h1>{movie.title}</h1>
-            {showGenre(movie.genre_ids).map((id) => (
-                <Badge bg="danger">{id}</Badge>
+            {showGenre(movie.genre_ids).map((id, idx) => (
+                <Badge bg="danger" key={idx}>{id}</Badge>
             ))}
             <div>
                 <img width={20} src={rating} alt="average icon" />

@@ -97,7 +97,7 @@ axios.interceptors.response.use(function (response) {
 ## react multi carousel
 - 슬라이드 만들기  
 [https://www.npmjs.com/package/react-multi-carousel](https://www.npmjs.com/package/react-multi-carousel)
-```shellscript
+```shell script
 npm install react-multi-carousel --save
 ```
 ```javascript
@@ -105,4 +105,33 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 ```
 
-
+## Pagenation
+- pagenation 만들기
+[https://www.npmjs.com/package/react-paginate](https://www.npmjs.com/package/react-paginate)
+```shell script
+npm install react-paginate --save
+```
+```javascript
+import ReactPaginate from 'react-paginate';
+// 생략
+<ReactPaginate
+  nextLabel="next >"
+  onPageChange={handlePageClick}
+  pageRangeDisplayed={3}
+  marginPagesDisplayed={2}
+  pageCount={pageCount} // 전체페이지 수
+  previousLabel="< previous"
+  pageClassName="page-item"
+  pageLinkClassName="page-link"
+  previousClassName="page-item"
+  previousLinkClassName="page-link"
+  nextClassName="page-item"
+  nextLinkClassName="page-link"
+  breakLabel="..."
+  breakClassName="page-item"
+  breakLinkClassName="page-link"
+  containerClassName="pagination"
+  activeClassName="active"
+  renderOnZeroPageCount={null}
+/>
+```
