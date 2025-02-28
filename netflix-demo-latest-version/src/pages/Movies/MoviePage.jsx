@@ -26,7 +26,7 @@ const MoviePage = () => {
 
   const {data, isLoading, isError, error} = useSearchMovieQuery({keyword, page});
   if(isLoading) {return (
-    <div className='spinner-area'>
+    <div className='spinner-area' style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh'}}>
       <Spinner
         animation="border"
         variant="danger"
